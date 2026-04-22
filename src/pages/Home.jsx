@@ -27,45 +27,7 @@ function Home() {
         <div className="home">
             <Navbar />
 
-            <section id="work" className="portfolio" style={{ paddingTop: '100px' }}>
-                <div className="container">
-                    <h2 className="section-title">За нас говорят наши клиенты,<br /><span className="gradient-text">которых мы раскачали</span></h2>
-                    <div className="portfolio-grid">
-                        {cases.map((item, index) => (
-                            <Link to={`/cases/${item.id}`} className="portfolio-card-link" key={index}>
-                                <div className="portfolio-card fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                                    <div className="portfolio-img-placeholder">
-                                        <div className="portfolio-overlay">
-                                            <span className="portfolio-category">{item.category}</span>
-                                            <h3>{item.title}</h3>
-                                            <p>{item.desc}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            <section id="home" className="hero">
-                <div className="container hero-container">
-                    <div className="hero-content fade-in">
-                        <h1 className="hero-title">Создаем цифровое <span className="gradient-text">совершенство</span></h1>
-                        <p className="hero-subtitle">Мы разрабатываем высокотехнологичные решения, которые раздвигают границы дизайна и технологий.</p>
-                        <div className="hero-btns">
-                            <button className="btn-primary">Начать проект</button>
-                            <button className="btn-secondary">Наши работы</button>
-                        </div>
-                    </div>
-                    <div className="hero-image-container fade-in">
-                        <img src={heroImg} alt="Hero" className="hero-image" />
-                        <div className="hero-blob"></div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="services" className="services">
+            <section id="services" className="services" style={{ paddingTop: '10rem' }}>
                 <div className="container">
                     <h2 className="section-title">Наша экспертиза</h2>
                     <div className="services-grid">
@@ -87,6 +49,44 @@ function Home() {
                             <p>Узнайте стратегии и креативы конкурентов. Будьте на шаг впереди рынка.</p>
                             <Link to="/services/analysis" className="read-more">Подробнее →</Link>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="home" className="hero">
+                <div className="container hero-container">
+                    <div className="hero-content fade-in">
+                        <h1 className="hero-title">Создаем цифровое <span className="gradient-text">совершенство</span></h1>
+                        <p className="hero-subtitle">Мы разрабатываем высокотехнологичные решения, которые раздвигают границы дизайна и технологий.</p>
+                        <div className="hero-btns">
+                            <button className="btn-primary">Начать проект</button>
+                            <button className="btn-secondary">Наши работы</button>
+                        </div>
+                    </div>
+                    <div className="hero-image-container fade-in">
+                        <img src={heroImg} alt="Hero" className="hero-image" />
+                        <div className="hero-blob"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="work" className="portfolio">
+                <div className="container">
+                    <h2 className="section-title">За нас говорят наши клиенты,<br /><span className="gradient-text">которых мы раскачали</span></h2>
+                    <div className="portfolio-grid">
+                        {cases.map((item, index) => (
+                            <Link to={`/cases/${item.id}`} className="portfolio-card-link" key={index}>
+                                <div className="portfolio-card fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                                    <div className="portfolio-img-placeholder">
+                                        <div className="portfolio-overlay">
+                                            <span className="portfolio-category">{item.category}</span>
+                                            <h3>{item.title}</h3>
+                                            <p>{item.desc}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </section>
