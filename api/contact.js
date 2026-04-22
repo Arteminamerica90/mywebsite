@@ -3,7 +3,7 @@ export default async function handler(req, res) {
         return res.status(405).json({ message: 'Method not allowed' });
     }
 
-    const { name, email, contact, message, fileUrl } = req.body;
+    const { name, email, contact, message } = req.body;
 
     const botToken = '8697927420:AAFjapgHaMhsgSUkckalr-fjyGu5ziEbxII';
     const chatId = '155778404';
@@ -11,26 +11,13 @@ export default async function handler(req, res) {
     const text = `🚀 Новая заявка (Media CPA)!\n\nИмя: ${name}\nEmail: ${email}\nКонтакт: ${contact}\nСообщение: ${message}`;
 
     try {
-        let telegramUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
-        let body = {
-            chat_id: chatId,
-            text: text,
-        };
-
-        // If there's a file, we use sendDocument with caption
-        if (fileUrl) {
-            telegramUrl = `https://api.telegram.org/bot${botToken}/sendDocument`;
-            body = {
-                chat_id: chatId,
-                document: fileUrl,
-                caption: text,
-            };
-        }
-
-        const response = await fetch(telegramUrl, {
+        const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body),
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: text,
+            }),
         });
 
         const data = await response.json();
