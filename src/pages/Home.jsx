@@ -53,23 +53,6 @@ function Home() {
                 </div>
             </section>
 
-            <section id="home" className="hero">
-                <div className="container hero-container">
-                    <div className="hero-content fade-in">
-                        <h1 className="hero-title">Создаем цифровое <span className="gradient-text">совершенство</span></h1>
-                        <p className="hero-subtitle">Мы разрабатываем высокотехнологичные решения, которые раздвигают границы дизайна и технологий.</p>
-                        <div className="hero-btns">
-                            <button className="btn-primary">Начать проект</button>
-                            <button className="btn-secondary">Наши работы</button>
-                        </div>
-                    </div>
-                    <div className="hero-image-container fade-in">
-                        <img src={heroImg} alt="Hero" className="hero-image" />
-                        <div className="hero-blob"></div>
-                    </div>
-                </div>
-            </section>
-
             <section id="work" className="portfolio">
                 <div className="container">
                     <h2 className="section-title">За нас говорят наши клиенты,<br /><span className="gradient-text">которых мы раскачали</span></h2>
