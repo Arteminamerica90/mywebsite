@@ -3,7 +3,21 @@ export default async function handler(req, res) {
         return res.status(405).json({ message: 'Method not allowed' });
     }
 
-    const { name, email, contact, message } = req.body;
+    // Vercel may not auto-parse body in some configurations
+    let body = req.body;
+    if (typeof body === 'string') {
+        try {
+            body = JSON.parse(body);
+        } catch (e) {
+            return res.status(400).json({ message: 'Invalid JSON body' });
+        }
+    }
+
+    const { name, email, contact, message } = body || {};
+
+    if (!name || !email || !contact || !message) {
+        return res.status(400).json({ message: 'Missing required fields', received: body });
+    }
 
     const botToken = '8697927420:AAFjapgHaMhsgSUkckalr-fjyGu5ziEbxII';
     const chatId = '155778404';
@@ -26,10 +40,11 @@ export default async function handler(req, res) {
             return res.status(200).json({ message: 'Success' });
         } else {
             console.error('Telegram API Error:', data);
-            return res.status(response.status).json({ message: 'Telegram Error', details: data });
+            return res.status(500).json({ message: 'Telegram Error', details: data });
         }
     } catch (error) {
         console.error('Server Error:', error);
         return res.status(500).json({ message: 'Internal Server Error', details: error.message });
     }
 }
+
