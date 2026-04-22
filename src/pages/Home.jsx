@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import heroImg from '../assets/hero.png';
 import ContactSection from '../components/ContactSection';
+import Navbar from '../components/Navbar';
 
 function Home() {
     const cases = [
-        { title: "BetterMe", desc: "Масштабирование Health & Fitness приложения", category: "Health & Fitness" },
-        { title: "30-Day Fitness", desc: "Оптимизация CPA и рост установок", category: "Fitness Challenge" },
-        { title: "Joom", desc: "Глобальный маркетинг для маркетплейса", category: "E-commerce" },
-        { title: "Calm", desc: "Привлечение осознанной аудитории", category: "Mental Health" },
-        { title: "Delivery Club", desc: "Лидерство на рынке доставки еды", category: "Food Delivery" },
-        { title: "FitOn", desc: "Взрывной рост фитнес-сообщества", category: "Fitness platform" },
+        { id: "betterme", title: "BetterMe", desc: "Масштабирование Health & Fitness приложения", category: "Health & Fitness" },
+        { id: "fitness30", title: "30-Day Fitness", desc: "Оптимизация CPA и рост установок", category: "Fitness Challenge" },
+        { id: "joom", title: "Joom", desc: "Глобальный маркетинг для маркетплейса", category: "E-commerce" },
+        { id: "calm", title: "Calm", desc: "Привлечение осознанной аудитории", category: "Mental Health" },
+        { id: "delivery", title: "Delivery Club", desc: "Лидерство на рынке доставки еды", category: "Food Delivery" },
+        { id: "fiton", title: "FitOn", desc: "Взрывной рост фитнес-сообщества", category: "Fitness platform" },
     ];
 
     const blogPosts = [
@@ -24,20 +25,28 @@ function Home() {
 
     return (
         <div className="home">
-            <nav className="navbar">
-                <div className="container nav-container">
-                    <div className="logo">Media CPA-Partners</div>
-                    <ul className="nav-links">
-                        <li><Link to="/services/audit">Аудит</Link></li>
-                        <li><Link to="/services/dev">Разработка</Link></li>
-                        <li><Link to="/services/analysis">Анализ</Link></li>
-                        <li><a href="#blog">Блог</a></li>
-                        <li><a href="#services">Услуги</a></li>
-                        <li><a href="#work">Кейсы</a></li>
-                        <li><a href="#contact">Контакты</a></li>
-                    </ul>
+            <Navbar />
+
+            <section id="work" className="portfolio" style={{ paddingTop: '100px' }}>
+                <div className="container">
+                    <h2 className="section-title">За нас говорят наши клиенты,<br /><span className="gradient-text">которых мы раскачали</span></h2>
+                    <div className="portfolio-grid">
+                        {cases.map((item, index) => (
+                            <Link to={`/cases/${item.id}`} className="portfolio-card-link" key={index}>
+                                <div className="portfolio-card fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                                    <div className="portfolio-img-placeholder">
+                                        <div className="portfolio-overlay">
+                                            <span className="portfolio-category">{item.category}</span>
+                                            <h3>{item.title}</h3>
+                                            <p>{item.desc}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
                 </div>
-            </nav>
+            </section>
 
             <section id="home" className="hero">
                 <div className="container hero-container">
@@ -78,25 +87,6 @@ function Home() {
                             <p>Узнайте стратегии и креативы конкурентов. Будьте на шаг впереди рынка.</p>
                             <Link to="/services/analysis" className="read-more">Подробнее →</Link>
                         </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="work" className="portfolio">
-                <div className="container">
-                    <h2 className="section-title">За нас говорят наши клиенты,<br /><span className="gradient-text">которых мы раскачали</span></h2>
-                    <div className="portfolio-grid">
-                        {cases.map((item, index) => (
-                            <div className="portfolio-card fade-in" key={index} style={{ animationDelay: `${index * 0.1}s` }}>
-                                <div className="portfolio-img-placeholder">
-                                    <div className="portfolio-overlay">
-                                        <span className="portfolio-category">{item.category}</span>
-                                        <h3>{item.title}</h3>
-                                        <p>{item.desc}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
                     </div>
                 </div>
             </section>

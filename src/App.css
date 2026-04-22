@@ -182,8 +182,15 @@
 
 /* Portfolio Section */
 .portfolio {
-  padding: 8rem 0;
+  padding: 10rem 0 8rem;
 }
+
+.portfolio-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 
 .portfolio-grid {
   display: grid;
@@ -617,6 +624,28 @@
   margin-bottom: 1rem;
   color: var(--accent-color);
 }
+
+.clickable-card {
+  cursor: pointer;
+  position: relative;
+}
+
+.clickable-card:hover {
+  background: rgba(139, 92, 246, 0.05);
+}
+
+.price-tag {
+  display: inline-block;
+  background: var(--accent-color);
+  color: #fff;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);
+}
+
 
 .service-cta-box {
   padding: 5rem;
