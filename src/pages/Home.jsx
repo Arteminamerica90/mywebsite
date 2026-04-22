@@ -27,7 +27,28 @@ function Home() {
         <div className="home">
             <Navbar />
 
-            <section id="services" className="services" style={{ paddingTop: '10rem' }}>
+            <section id="work" className="portfolio" style={{ paddingTop: '10rem' }}>
+                <div className="container">
+                    <h2 className="section-title">За нас говорят наши клиенты,<br /><span className="gradient-text">которых мы раскачали</span></h2>
+                    <div className="portfolio-grid">
+                        {cases.map((item, index) => (
+                            <Link to={`/cases/${item.id}`} className="portfolio-card-link" key={index}>
+                                <div className="portfolio-card fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                                    <div className="portfolio-img-placeholder">
+                                        <div className="portfolio-overlay">
+                                            <span className="portfolio-category">{item.category}</span>
+                                            <h3>{item.title}</h3>
+                                            <p>{item.desc}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section id="services" className="services">
                 <div className="container">
                     <h2 className="section-title">Наша экспертиза</h2>
                     <div className="services-grid">
@@ -53,26 +74,6 @@ function Home() {
                 </div>
             </section>
 
-            <section id="work" className="portfolio">
-                <div className="container">
-                    <h2 className="section-title">За нас говорят наши клиенты,<br /><span className="gradient-text">которых мы раскачали</span></h2>
-                    <div className="portfolio-grid">
-                        {cases.map((item, index) => (
-                            <Link to={`/cases/${item.id}`} className="portfolio-card-link" key={index}>
-                                <div className="portfolio-card fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                                    <div className="portfolio-img-placeholder">
-                                        <div className="portfolio-overlay">
-                                            <span className="portfolio-category">{item.category}</span>
-                                            <h3>{item.title}</h3>
-                                            <p>{item.desc}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
-                </div>
-            </section>
 
             <section id="blog" className="blog">
                 <div className="container">
