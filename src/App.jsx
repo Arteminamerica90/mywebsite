@@ -8,6 +8,7 @@ import ServiceAudit from './pages/ServiceAudit';
 import ServiceDev from './pages/ServiceDev';
 import ServiceAnalysis from './pages/ServiceAnalysis';
 import CasePage from './pages/CasePage';
+import { AppStorePage, AppSalesPage, WebSalesPage } from './pages/ServicePages';
 import './App.css';
 
 const ProtectedRoute = ({ children }) => {
@@ -26,6 +27,9 @@ function App() {
         <Route path="/services/dev" element={<ServiceDev />} />
         <Route path="/services/analysis" element={<ServiceAnalysis />} />
         <Route path="/cases/:id" element={<CasePage />} />
+        <Route path="/services/appstore" element={<AppStorePage />} />
+        <Route path="/services/app-sales" element={<AppSalesPage />} />
+        <Route path="/services/web-sales" element={<WebSalesPage />} />
         <Route
           path="/admin"
           element={
