@@ -35,6 +35,7 @@ function Navbar() {
                     <li><Link to="/services/dev">Разработка</Link></li>
                     <li><Link to="/services/analysis">Анализ</Link></li>
                     <li><a href="/#blog">Блог</a></li>
+                    <li><Link to="/course">🎓 Курс</Link></li>
                     <li><a href="/#work">Кейсы</a></li>
                     <li><a href="/#contact">Контакты</a></li>
                 </ul>
