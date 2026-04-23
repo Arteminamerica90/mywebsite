@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 const blogPosts = {
     'promotion-structure': {
@@ -95,19 +96,9 @@ function BlogPost() {
 
     return (
         <div className="blog-post-page">
-            <nav className="navbar">
-                <div className="container nav-container">
-                    <div className="logo">Media CPA-Partners</div>
-                    <ul className="nav-links">
-                        <li><Link to="/">Главная</Link></li>
-                        <li><Link to="/services/audit">Аудит</Link></li>
-                        <li><Link to="/services/dev">Разработка</Link></li>
-                        <li><Link to="/services/analysis">Анализ</Link></li>
-                    </ul>
-                </div>
-            </nav>
+            <Navbar />
 
-            <div className="container post-content fade-in">
+            <div className="container post-content fade-in" style={{ paddingTop: '120px' }}>
                 <div className="post-header">
                     <span className="post-date">{post.date}</span>
                     <h1>{post.title}</h1>
