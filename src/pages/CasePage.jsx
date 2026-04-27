@@ -71,6 +71,7 @@ const cases = {
         category: 'Mental Health',
         tag: 'Кейс: Niche Audience',
         tagline: 'Привлечение осознанной аудитории',
+        image: '/calm.png',
         intro: 'Calm — мировой лидер в категории Mental Health. Специфика продукта требовала особого подхода к коммуникации в рекламе.',
         sections: [
             {
