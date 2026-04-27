@@ -77,6 +77,15 @@
   animation: dropdownFade 0.15s ease;
 }
 
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 0;
+  width: 100%;
+  height: 15px;
+}
+
 @keyframes dropdownFade {
   from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
   to   { opacity: 1; transform: translateX(-50%) translateY(0); }
