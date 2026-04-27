@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar';
 
 function Home() {
     const cases = [
+        { id: "hfwl", title: "Home Fitness", desc: "40х рост подписок через SKAN и Web2App", category: "Health & Fitness", img: "/hfwl.png" },
         { id: "betterme", title: "BetterMe", desc: "Масштабирование Health & Fitness приложения", category: "Health & Fitness" },
         { id: "fitness30", title: "30-Day Fitness", desc: "Оптимизация CPA и рост установок", category: "Fitness Challenge", img: "/fitness30.png" },
         { id: "joom", title: "Joom", desc: "Глобальный маркетинг для маркетплейса", category: "E-commerce" },
