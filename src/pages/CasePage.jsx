@@ -9,6 +9,7 @@ const cases = {
         category: 'Health & Fitness',
         tag: 'Кейс: User Acquisition',
         tagline: 'Walking for Weight Loss & Running for Weight Loss',
+        image: '/betterme.png',
         intro: 'BetterMe — один из самых быстрорастущих Health & Fitness продуктов на глобальном рынке. Наша команда подключилась на этапе масштабирования и выстроила полноценную UA-машину с нуля.',
         sections: [
             {
