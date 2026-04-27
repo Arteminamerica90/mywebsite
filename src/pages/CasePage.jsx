@@ -85,6 +85,7 @@ const cases = {
         category: 'Food Delivery',
         tag: 'Кейс: Market Leadership',
         tagline: 'Лидерство на рынке доставки еды',
+        image: '/delivery.png',
         intro: 'Delivery Club — один из лидеров рынка доставки еды в России. Работали над укреплением позиций и привлечением новой аудитории.',
         sections: [
             {
