@@ -28,6 +28,9 @@ function Navbar() {
                                 <li>
                                     <Link to="/services/web-sales">🌐 Усиление через веб-сайт</Link>
                                 </li>
+                                <li>
+                                    <Link to="/services/hr">👥 HR / Поиск талантов</Link>
+                                </li>
                             </ul>
                         )}
                     </li>

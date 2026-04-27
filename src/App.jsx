@@ -8,7 +8,7 @@ import ServiceAudit from './pages/ServiceAudit';
 import ServiceDev from './pages/ServiceDev';
 import ServiceAnalysis from './pages/ServiceAnalysis';
 import CasePage from './pages/CasePage';
-import { AppStorePage, AppSalesPage, WebSalesPage } from './pages/ServicePages';
+import { AppStorePage, AppSalesPage, WebSalesPage, HrPage } from './pages/ServicePages';
 import CoursePage from './pages/CoursePage';
 import CourseLogin from './pages/CourseLogin';
 import CourseDashboard from './pages/CourseDashboard';
@@ -38,6 +38,7 @@ function App() {
         <Route path="/services/appstore" element={<AppStorePage />} />
         <Route path="/services/app-sales" element={<AppSalesPage />} />
         <Route path="/services/web-sales" element={<WebSalesPage />} />
+        <Route path="/services/hr" element={<HrPage />} />
         <Route path="/course" element={<CoursePage />} />
         <Route path="/course/login" element={<CourseLogin />} />
         <Route path="/course/dashboard" element={<ProtectedCourseRoute><CourseDashboard /></ProtectedCourseRoute>} />
