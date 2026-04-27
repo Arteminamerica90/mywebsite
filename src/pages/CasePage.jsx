@@ -99,6 +99,7 @@ const cases = {
         category: 'Fitness platform',
         tag: 'Кейс: Community Growth',
         tagline: 'Взрывной рост фитнес-сообщества',
+        image: '/fiton.png',
         intro: 'FitOn — фитнес-платформа с элементами социальной сети. Задача — вырастить активное сообщество вокруг приложения.',
         sections: [
             {
