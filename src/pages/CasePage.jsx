@@ -38,6 +38,7 @@ const cases = {
         category: 'Fitness Challenge',
         tag: 'Кейс: CPA Optimization',
         tagline: 'Оптимизация CPA и взрывной рост установок',
+        image: '/fitness30.png',
         intro: 'Фитнес-приложение с вирусной механикой 30-дневных челленджей. Наша задача — снизить стоимость установки и увеличить объём качественного трафика.',
         sections: [
             {
@@ -128,6 +129,17 @@ function CasePage() {
                 <div className="post-header">
                     <span className="post-date">{caseData.tag}</span>
                     <span style={{ display: 'inline-block', background: 'rgba(139,92,246,0.15)', color: 'var(--accent-color)', padding: '0.3rem 0.9rem', borderRadius: '50px', fontSize: '0.8rem', fontWeight: 700, marginBottom: '1rem', marginLeft: '1rem', textTransform: 'uppercase', letterSpacing: '1px' }}>{caseData.category}</span>
+                    
+                    {caseData.image && (
+                        <div style={{ margin: '2rem auto', textAlign: 'center' }}>
+                            <img 
+                                src={caseData.image} 
+                                alt={caseData.title} 
+                                style={{ width: '100%', maxWidth: '300px', borderRadius: '24px' }} 
+                            />
+                        </div>
+                    )}
+
                     <h1>{caseData.title}</h1>
                     <p style={{ fontSize: '1.3rem', color: 'var(--accent-color)', fontWeight: 600, marginTop: '0.5rem' }}>{caseData.tagline}</p>
                 </div>

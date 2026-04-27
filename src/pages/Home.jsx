@@ -7,7 +7,7 @@ import Navbar from '../components/Navbar';
 function Home() {
     const cases = [
         { id: "betterme", title: "BetterMe", desc: "Масштабирование Health & Fitness приложения", category: "Health & Fitness" },
-        { id: "fitness30", title: "30-Day Fitness", desc: "Оптимизация CPA и рост установок", category: "Fitness Challenge" },
+        { id: "fitness30", title: "30-Day Fitness", desc: "Оптимизация CPA и рост установок", category: "Fitness Challenge", img: "/fitness30.png" },
         { id: "joom", title: "Joom", desc: "Глобальный маркетинг для маркетплейса", category: "E-commerce" },
         { id: "calm", title: "Calm", desc: "Привлечение осознанной аудитории", category: "Mental Health" },
         { id: "delivery", title: "Delivery Club", desc: "Лидерство на рынке доставки еды", category: "Food Delivery" },
@@ -34,7 +34,13 @@ function Home() {
                         {cases.map((item, index) => (
                             <Link to={`/cases/${item.id}`} className="portfolio-card-link" key={index}>
                                 <div className="portfolio-card fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                                    <div className="portfolio-img-placeholder">
+                                    <div className="portfolio-img-placeholder" style={{ 
+                                        backgroundImage: item.img ? `url(${item.img})` : 'none',
+                                        backgroundSize: 'contain',
+                                        backgroundPosition: 'center',
+                                        backgroundRepeat: 'no-repeat',
+                                        backgroundColor: item.img ? '#fff' : 'var(--glass-bg)'
+                                    }}>
                                         <div className="portfolio-overlay">
                                             <span className="portfolio-category">{item.category}</span>
                                             <h3>{item.title}</h3>
