@@ -42,10 +42,10 @@ function Home() {
                                                 style={{ width: '100%', height: '100%', objectFit: 'fill', display: 'block' }} 
                                             />
                                         ) : null}
-                                        <div className="portfolio-overlay" style={{ background: 'linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 60%)' }}>
-                                            <span className="portfolio-category">{item.category}</span>
-                                            <h3>{item.title}</h3>
-                                            <p>{item.desc}</p>
+                                        <div className="portfolio-overlay" style={{ background: 'linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%)', padding: '2rem' }}>
+                                            <span className="portfolio-category" style={{ color: 'var(--accent-color)', fontWeight: 700 }}>{item.category}</span>
+                                            <h3 style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>{item.title}</h3>
+                                            <p style={{ color: '#eee', textShadow: '0 1px 5px rgba(0,0,0,0.5)' }}>{item.desc}</p>
                                         </div>
                                     </div>
                                 </div>
