@@ -49,6 +49,7 @@ function Admin() {
                                     <span className="message-date">{msg.date}</span>
                                 </div>
                                 <div className="message-email">{msg.email}</div>
+                                <div className="message-contact">📞 {msg.contact}</div>
                                 <div className="message-body">{msg.message}</div>
                             </div>
                         ))

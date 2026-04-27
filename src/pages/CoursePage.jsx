@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar';
 function CoursePage() {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
     const [status, setStatus] = useState('');
     const navigate = useNavigate();
 
@@ -25,19 +26,22 @@ function CoursePage() {
         try {
             // Save course subscriber locally
             const subscribers = JSON.parse(localStorage.getItem('course_subscribers') || '[]');
-            const newSub = { name, email, date: new Date().toLocaleString(), id: Date.now() };
+            const newSub = { name, email, phone, date: new Date().toLocaleString(), id: Date.now() };
             localStorage.setItem('course_subscribers', JSON.stringify([newSub, ...subscribers]));
 
-            // Notify Telegram
-            const botToken = '8697927420:AAFjapgHaMhsgSUkckalr-fjyGu5ziEbxII';
-            const chatId = '155778404';
-            const text = `🎓 Новая заявка на курс CMO!\n\nИмя: ${name}\nEmail: ${email}\nСтоимость: 99 000 руб.`;
+            // Also save to main admin messages
+            const adminMessages = JSON.parse(localStorage.getItem('admin_messages') || '[]');
+            localStorage.setItem('admin_messages', JSON.stringify([{
+                ...newSub,
+                contact: phone,
+                message: `🎓 КУРС CMO: Заявка на курс "Как повысить свою экспертизу" — 99 000 руб.`
+            }, ...adminMessages]));
 
             await axios.post('/api/contact', {
                 name,
                 email,
-                contact: 'Курс CMO',
-                message: `Заявка на курс "Как повысить свою экспертизу" — 99 000 руб.`
+                contact: phone,
+                message: `🎓 КУРС CMO: Заявка на курс "Как повысить свою экспертизу" — 99 000 руб.`
             });
 
             setStatus('success');
@@ -127,6 +131,17 @@ function CoursePage() {
                                 required
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
+                                style={{ width: '100%', padding: '1.2rem', background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', borderRadius: '16px', color: '#fff', fontSize: '1rem', fontFamily: 'inherit', boxSizing: 'border-box' }}
+                            />
+                            <input
+                                type="text"
+                                placeholder="Ваш телефон"
+                                required
+                                value={phone}
+                                onChange={(e) => {
+                                    const value = e.target.value.replace(/[^\d+() ]/g, '');
+                                    setPhone(value);
+                                }}
                                 style={{ width: '100%', padding: '1.2rem', background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', borderRadius: '16px', color: '#fff', fontSize: '1rem', fontFamily: 'inherit', boxSizing: 'border-box' }}
                             />
                             <input
