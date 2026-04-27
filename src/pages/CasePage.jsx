@@ -57,6 +57,7 @@ const cases = {
         category: 'E-commerce',
         tag: 'Кейс: Global UA',
         tagline: 'Глобальный маркетинг для маркетплейса',
+        image: '/joom.png',
         intro: 'Joom — международный маркетплейс с аудиторией в десятках стран. Выстраивали User Acquisition на нескольких рынках одновременно.',
         sections: [
             {
