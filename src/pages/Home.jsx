@@ -34,12 +34,12 @@ function Home() {
                         {cases.map((item, index) => (
                             <Link to={`/cases/${item.id}`} className="portfolio-card-link" key={index}>
                                 <div className="portfolio-card fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                                    <div className="portfolio-img-placeholder" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
+                                    <div className="portfolio-img-placeholder" style={{ position: 'relative', width: '100%', height: '100%' }}>
                                         {item.img ? (
                                             <img 
                                                 src={item.img} 
                                                 alt={item.title} 
-                                                style={{ maxWidth: '80%', maxHeight: '120px', objectFit: 'contain' }} 
+                                                style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
                                             />
                                         ) : null}
                                         <div className="portfolio-overlay">
