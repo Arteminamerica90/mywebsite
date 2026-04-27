@@ -34,14 +34,16 @@ function Home() {
                         {cases.map((item, index) => (
                             <Link to={`/cases/${item.id}`} className="portfolio-card-link" key={index}>
                                 <div className="portfolio-card fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                                    <div className="portfolio-img-placeholder" style={{ position: 'relative', width: '100%', height: '100%', backgroundColor: '#fff' }}>
-                                        {item.img ? (
-                                            <img 
-                                                src={item.img} 
-                                                alt={item.title} 
-                                                style={{ width: '100%', height: '100%', objectFit: 'fill', display: 'block' }} 
-                                            />
-                                        ) : null}
+                                    <div className="portfolio-img-placeholder" style={{ 
+                                        position: 'relative', 
+                                        width: '100%', 
+                                        height: '100%',
+                                        backgroundImage: item.img ? `url(${item.img})` : 'none',
+                                        backgroundSize: 'cover',
+                                        backgroundPosition: 'center',
+                                        backgroundRepeat: 'no-repeat',
+                                        backgroundColor: '#fff'
+                                    }}>
                                         <div className="portfolio-overlay" style={{ background: 'linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%)', padding: '2rem' }}>
                                             <span className="portfolio-category" style={{ color: 'var(--accent-color)', fontWeight: 700 }}>{item.category}</span>
                                             <h3 style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>{item.title}</h3>
