@@ -7,12 +7,12 @@ import Navbar from '../components/Navbar';
 function Home() {
     const cases = [
         { id: "hfwl", title: "Home Fitness", desc: "40х рост подписок через SKAN и Web2App", category: "Health & Fitness", img: "/hfwl.png" },
+        { id: "fiton", title: "FitOn", desc: "Взрывной рост фитнес-сообщества", category: "Fitness platform", img: "/fiton.png" },
         { id: "betterme", title: "BetterMe", desc: "Масштабирование Health & Fitness приложения", category: "Health & Fitness", img: "/betterme.png" },
         { id: "fitness30", title: "30-Day Fitness", desc: "Оптимизация CPA и рост установок", category: "Fitness Challenge", img: "/fitness30.png" },
         { id: "joom", title: "Joom", desc: "Глобальный маркетинг для маркетплейса", category: "E-commerce", img: "/joom.png" },
         { id: "calm", title: "Calm", desc: "Привлечение осознанной аудитории", category: "Mental Health", img: "/calm.png" },
         { id: "delivery", title: "Delivery Club", desc: "Лидерство на рынке доставки еды", category: "Food Delivery", img: "/delivery.png" },
-        { id: "fiton", title: "FitOn", desc: "Взрывной рост фитнес-сообщества", category: "Fitness platform", img: "/fiton.png" },
     ];
 
     const blogPosts = [
@@ -39,12 +39,16 @@ function Home() {
                                         position: 'relative', 
                                         width: '100%', 
                                         height: '100%',
-                                        backgroundImage: item.img ? `url(${item.img})` : 'none',
-                                        backgroundSize: 'cover',
-                                        backgroundPosition: 'center',
-                                        backgroundRepeat: 'no-repeat',
-                                        backgroundColor: '#fff'
+                                        backgroundColor: '#fff',
+                                        overflow: 'hidden'
                                     }}>
+                                        {item.img ? (
+                                            <img 
+                                                src={item.img} 
+                                                alt={item.title} 
+                                                style={{ width: '100%', height: '100%', objectFit: 'fill', display: 'block' }} 
+                                            />
+                                        ) : null}
                                         <div className="portfolio-overlay" style={{ background: 'linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%)', padding: '2rem' }}>
                                             <span className="portfolio-category" style={{ color: 'var(--accent-color)', fontWeight: 700 }}>{item.category}</span>
                                             <h3 style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>{item.title}</h3>
