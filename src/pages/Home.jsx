@@ -3,38 +3,54 @@ import { Link } from 'react-router-dom';
 import heroImg from '../assets/hero.png';
 import ContactSection from '../components/ContactSection';
 import Navbar from '../components/Navbar';
+import { useReveal } from '../hooks/useReveal';
+import { CountUp } from '../components/CountUp';
+import { Reveal } from '../components/Reveal';
+
 
 function Home() {
+    useReveal();
     const cases = [
-        { id: "hfwl", title: "Home Fitness", desc: "12 500+ подписок (iOS, Web2App, Web2Web)", category: "Health & Fitness", img: "/hfwl.png" },
+
+        { id: "hfwl", title: "Home Fitness", desc: <><CountUp end={12500} suffix="+" /> подписок (iOS, Web2App, Web2Web)</>, category: "Health & Fitness", img: "/hfwl.png" },
         { id: "fiton", title: "FitOn", desc: "Взрывной рост фитнес-сообщества", category: "Fitness platform", img: "/fiton.png" },
         { id: "betterme", title: "BetterMe", desc: "Масштабирование Health & Fitness приложения", category: "Health & Fitness", img: "/betterme.png" },
-        { id: "fitness30", title: "30-Day Fitness", desc: "Оптимизация CPA и рост установок", category: "Fitness Challenge", img: "/fitness30.png" },
-        { id: "joom", title: "Joom", desc: "Глобальный маркетинг для маркетплейса", category: "E-commerce", img: "/joom.png" },
+        { id: "fitness30", title: "30-Day Fitness", desc: <><CountUp end={1277000} prefix="$" /> покупок (Worldwide except Asia)</>, category: "Fitness Challenge", img: "/fitness30.png" },
+        { id: "joom", title: "Joom", desc: <><CountUp end={450000} suffix="+" /> первых покупок (CIS, Latam)</>, category: "E-commerce", img: "/joom.png" },
         { id: "calm", title: "Calm", desc: "Привлечение осознанной аудитории", category: "Mental Health", img: "/calm.png" },
         { id: "delivery", title: "Delivery Club", desc: "Лидерство на рынке доставки еды", category: "Food Delivery", img: "/delivery.png" },
     ];
 
     const blogPosts = [
-        { id: 'app-advertising', date: '23 Апр 2024', title: 'Как рекламировать с помощью приложения', desc: '3 ключевых инструмента внутреннего маркетинга: пуши, email-сбор и иконка как рекламный баннер.' },
-        { id: 'promotion-structure', date: '15 Апр 2024', title: 'Структура продвижения приложений', desc: 'Разбираем комплексную систему продвижения от стратегии до аналитики.' },
-        { id: 'creatives', date: '12 Апр 2024', title: 'Креативы для продвижения приложений', desc: 'Что заставляет людей кликать? Секреты UGC и эмоциональных триггеров.' },
-        { id: 'starting-growth', date: '10 Апр 2024', title: 'С чего начинать развитие приложений', desc: 'Первые шаги: MVP, поиск Product-Market Fit и сбор фидбека.' },
-        { id: 'app-marketing', date: '08 Апр 2024', title: 'Маркетинг приложений', desc: 'Глубокая стратегия удержания (Retention) и работа с виральностью.' },
-        { id: 'push-notifications', date: '05 Апр 2024', title: 'Пуши для развития приложений', desc: 'Как правильно использовать уведомления, чтобы возвращать пользователей.' },
+        { id: 'app-advertising', date: '23 Апр 2024', title: 'Как рекламировать с помощью приложения', desc: '3 ключевых инструмента внутреннего маркетинга.\nПуши, email-сбор и иконка как рекламный баннер.' },
+        { id: 'promotion-structure', date: '15 Апр 2024', title: 'Структура продвижения приложений', desc: 'Разбираем комплексную систему продвижения.\nОт стратегии до аналитики.' },
+        { id: 'creatives', date: '12 Апр 2024', title: 'Креативы для продвижения приложений', desc: 'Что заставляет людей кликать?\nСекреты UGC и эмоциональных триггеров.' },
+        { id: 'starting-growth', date: '10 Апр 2024', title: 'С чего начинать развитие приложений', desc: 'Первые шаги: MVP.\nПоиск Product-Market Fit и сбор фидбека.' },
+        { id: 'app-marketing', date: '08 Апр 2024', title: 'Маркетинг приложений', desc: 'Глубокая стратегия удержания (Retention).\nРабота с виральностью.' },
+        { id: 'push-notifications', date: '05 Апр 2024', title: 'Пуши для развития приложений', desc: 'Как правильно использовать уведомления.\nВозвращаем пользователей в приложение.' },
     ];
+
+    const [expandedIndex, setExpandedIndex] = useState(null);
 
     return (
         <div className="home">
             <Navbar />
 
+
             <section id="work" className="portfolio" style={{ paddingTop: '10rem' }}>
                 <div className="container">
-                    <h2 className="section-title">За нас говорят наши клиенты,<br /><span className="gradient-text">которых мы раскачали</span></h2>
+                    <Reveal animation="fade-in-right">
+                        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+                            <h2 className="section-title" style={{ marginBottom: '1rem' }}>За нас говорят наши клиенты,<br /><span className="gradient-text">которых мы раскачали</span></h2>
+                            <p className="lead" style={{ margin: '0 auto' }}>Кейсы, которыми мы гордимся. Реальные цифры и стратегии масштабирования.</p>
+                        </div>
+                    </Reveal>
+
                     <div className="portfolio-grid">
                         {cases.map((item, index) => (
                             <Link to={`/cases/${item.id}`} className="portfolio-card-link" key={index}>
-                                <div className="portfolio-card fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                                <div className="portfolio-card reveal fade-in-bottom" style={{ transitionDelay: `${index * 0.1}s` }}>
+
                                     <div className="portfolio-img-placeholder" style={{ 
                                         position: 'relative', 
                                         width: '100%', 
@@ -69,39 +85,19 @@ function Home() {
                 </div>
             </section>
 
-            <section id="services" className="services">
+            <section id="blog" className="blog" style={{ paddingTop: '10rem' }}>
                 <div className="container">
-                    <h2 className="section-title">Наша экспертиза</h2>
-                    <div className="services-grid">
-                        <div className="service-card">
-                            <div className="service-icon">✦</div>
-                            <h3>Аудит приложения</h3>
-                            <p>Глубокий анализ вашего продукта, выявление ошибок и поиск скрытых возможностей для роста.</p>
-                            <Link to="/services/audit" className="read-more">Подробнее →</Link>
+                    <Reveal animation="fade-in-right">
+                        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+                            <h2 className="section-title" style={{ marginBottom: '1rem' }}>Наш <span className="gradient-text">Блог</span></h2>
+                            <p className="lead" style={{ margin: '0 auto' }}>Делимся опытом, кейсами и инсайтами из мира мобильного маркетинга и арбитража трафика.</p>
                         </div>
-                        <div className="service-card">
-                            <div className="service-icon">⚡</div>
-                            <h3>Разработка</h3>
-                            <p>Создаем быстрые, адаптивные сайты и мобильные приложения на острие технологий.</p>
-                            <Link to="/services/dev" className="read-more">Подробнее →</Link>
-                        </div>
-                        <div className="service-card">
-                            <div className="service-icon">◈</div>
-                            <h3>Конкурентный анализ</h3>
-                            <p>Узнайте стратегии и креативы конкурентов. Будьте на шаг впереди рынка.</p>
-                            <Link to="/services/analysis" className="read-more">Подробнее →</Link>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                    </Reveal>
 
-
-            <section id="blog" className="blog">
-                <div className="container">
-                    <h2 className="section-title">Наш <span className="gradient-text">Блог</span></h2>
                     <div className="blog-grid">
                         {blogPosts.map((post, index) => (
-                            <div className="blog-card fade-in" key={post.id} style={{ animationDelay: `${index * 0.1}s` }}>
+                            <div className="blog-card reveal fade-in-bottom" key={post.id} style={{ transitionDelay: `${index * 0.1}s` }}>
+
                                 <div className="blog-date">{post.date}</div>
                                 <h3>{post.title}</h3>
                                 <p>{post.desc}</p>
@@ -111,6 +107,113 @@ function Home() {
                     </div>
                 </div>
             </section>
+
+
+            <section id="create" className="create-section" style={{ paddingTop: '10rem' }}>
+                <div className="container">
+                    <Reveal animation="fade-in-right">
+                        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+                            <h2 className="section-title" style={{ marginBottom: '1rem' }}>Что Мы Создаем</h2>
+                            <p className="lead" style={{ margin: '0 auto' }}>Инновационные решения, которые оставляют след — то, что мы создаем для вашего цифрового успеха.</p>
+                        </div>
+                    </Reveal>
+
+                    <div className="create-grid">
+                        {[
+                            { 
+                                icon: '🚀', 
+                                title: 'SEO-продвижение', 
+                                desc: 'Оптимизируем ваш сайт для улучшения его видимости в поисковых системах.',
+                                extra: 'Мы проводим всесторонний анализ вашего сайта и оптимизируем его, чтобы сделать его более видимым для поисковых систем. Мы работаем над ключевыми словами, внутренней структурой сайта, оптимизацией контента и другими факторами для повышения вашего рейтинга в результатах поиска.'
+                            },
+                            { 
+                                icon: '📱', 
+                                title: 'Продвижение приложений', 
+                                desc: 'Продвижение мобильных приложений — наша основная задача.',
+                                extra: 'Мы продвигаем ваше мобильное приложение от ранних этапов медиапланирования до анализа и оптимизации трафика. Мы используем топовые in-app платформы, источники социального трафика, частные DSP, OEM-трафик, собственную аналитику и многое другое.'
+                            },
+                            { 
+                                icon: '🌐', 
+                                title: 'Контекстная реклама', 
+                                desc: 'Создаем и оптимизируем рекламные кампании на различных платформах.',
+                                extra: 'Мы создаем и оптимизируем кампании контекстной рекламы для привлечения целевой аудитории на таких платформах, как Google Ads. Мы подбираем ключевые слова, создаем убедительные объявления и оптимизируем ставки для максимизации вашей конверсии.'
+                            },
+                            { 
+                                icon: '🔗', title: 'Программатик', 
+                                desc: 'Работаем с ведущими программатик-источниками (CPC/CPM/CPI) для прорывного продвижения вашего продукта.',
+                                extra: 'Мы сотрудничаем с ведущими программатик-источниками на рынке, работая по моделям CPC/CPM/CPI, чтобы вывести продвижение вашего продукта на новый уровень.'
+                            },
+                            { 
+                                icon: '🎯', 
+                                title: 'Ретаргетинг', 
+                                desc: 'Удерживайте пользователей, повышайте RR и LTV, возвращая знакомую аудиторию к вашим продуктам.',
+                                extra: 'Трафик ретаргетинга позволяет нам возвращать пользователей, которые ранее взаимодействовали с вашими продуктами, на ваш сайт или в мобильное приложение. Эта стратегия помогает удерживать пользователей, повышать показатели RR и LTV, а также расширять охват целевой аудитории.'
+                            },
+                            { 
+                                icon: '📊', 
+                                title: 'Разработка приложений', 
+                                desc: 'Наша команда поможет вам во всем, что связано с разработкой мобильных приложений.',
+                                extra: 'Наша команда экспертов поможет вам во всех аспектах разработки мобильных приложений: от расчета бюджета до финального дизайна и запуска в Google Play, App Store или альтернативных магазинах.'
+                            },
+                        ].map((item, index) => (
+                            <Reveal animation="fade-in-bottom" delay={index * 0.1} key={index}>
+                                <div className="create-card">
+                                    <div className="create-icon">{item.icon}</div>
+                                    <h3>{item.title}</h3>
+                                    <p>{item.desc}</p>
+                                    
+                                    <div className={`create-extra-content ${expandedIndex === index ? 'expanded' : ''}`}>
+                                        <p>{item.extra}</p>
+                                    </div>
+
+                                    <button className="create-learn-more" onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}>
+                                        <span>{expandedIndex === index ? '− Скрыть' : '+ Подробнее'}</span>
+                                    </button>
+                                </div>
+                            </Reveal>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+
+
+            <section id="services" className="services">
+                <div className="container">
+                    <Reveal animation="fade-in-right">
+                        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+                            <h2 className="section-title" style={{ marginBottom: '1rem' }}>Наша экспертиза</h2>
+                            <p className="lead" style={{ margin: '0 auto' }}>Комплексный подход к развитию вашего продукта на каждом этапе жизненного цикла.</p>
+                        </div>
+                    </Reveal>
+                    <div className="services-grid">
+                        <div className="service-card reveal fade-in-bottom">
+
+                            <div className="service-icon">✦</div>
+                            <h3>Аудит приложения</h3>
+                            <p>Глубокий анализ вашего продукта, выявление ошибок и поиск скрытых возможностей для роста.</p>
+                            <Link to="/services/audit" className="read-more">Подробнее →</Link>
+                        </div>
+                        <div className="service-card reveal fade-in-bottom">
+                            <div className="service-icon">⚡</div>
+
+                            <h3>Разработка</h3>
+                            <p>Создаем быстрые, адаптивные сайты и мобильные приложения на острие технологий.</p>
+                            <Link to="/services/dev" className="read-more">Подробнее →</Link>
+                        </div>
+                        <div className="service-card reveal fade-in-bottom">
+                            <div className="service-icon">◈</div>
+
+                            <h3>Конкурентный анализ</h3>
+                            <p>Узнайте стратегии и креативы конкурентов. Будьте на шаг впереди рынка.</p>
+                            <Link to="/services/analysis" className="read-more">Подробнее →</Link>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
 
             <ContactSection />
 

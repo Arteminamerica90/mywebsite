@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
+import { Reveal } from '../components/Reveal';
+
 
 function CoursePage() {
     const [email, setEmail] = useState('');
@@ -60,41 +62,51 @@ function CoursePage() {
 
             {/* Hero */}
             <div style={{ paddingTop: '100px', background: 'linear-gradient(180deg, rgba(139,92,246,0.08) 0%, transparent 100%)', paddingBottom: '5rem' }}>
-                <div className="container" style={{ textAlign: 'center', maxWidth: '860px', margin: '0 auto' }}>
-                    <div className="badge">🎓 Закрытый курс</div>
-                    <h1 style={{ fontSize: '3.5rem', lineHeight: 1.15, margin: '1rem 0' }}>
-                        Как повысить свою экспертизу<br />
-                        <span className="gradient-text">до уровня CMO</span>
-                    </h1>
-                    <p style={{ fontSize: '1.25rem', color: 'var(--muted-text)', maxWidth: '620px', margin: '0 auto 2rem' }}>
-                        Курс для маркетологов, которым недостаточно классических инструментов. Для тех, кто хочет думать и действовать на уровне Chief Marketing Officer.
-                    </p>
-                    <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                        <div style={{ background: 'rgba(139,92,246,0.15)', border: '1px solid var(--accent-color)', borderRadius: '12px', padding: '0.6rem 1.2rem', fontSize: '0.9rem', fontWeight: 600 }}>🕐 6 модулей</div>
-                        <div style={{ background: 'rgba(139,92,246,0.15)', border: '1px solid var(--accent-color)', borderRadius: '12px', padding: '0.6rem 1.2rem', fontSize: '0.9rem', fontWeight: 600 }}>👥 Закрытое сообщество</div>
-                        <div style={{ background: 'rgba(139,92,246,0.15)', border: '1px solid var(--accent-color)', borderRadius: '12px', padding: '0.6rem 1.2rem', fontSize: '0.9rem', fontWeight: 600 }}>🔁 Доступ навсегда</div>
+                <Reveal animation="fade-in-right">
+                    <div className="container" style={{ textAlign: 'center', maxWidth: '860px', margin: '0 auto' }}>
+                        <div className="badge">🎓 Закрытый курс</div>
+                        <h1 style={{ fontSize: '3.5rem', lineHeight: 1.15, margin: '1rem 0' }}>
+                            Как повысить свою экспертизу<br />
+                            <span className="gradient-text">до уровня CMO</span>
+                        </h1>
+                        <p style={{ fontSize: '1.25rem', color: 'var(--muted-text)', maxWidth: '620px', margin: '0 auto 2rem' }}>
+                            Курс для маркетологов, которым недостаточно классических инструментов. Для тех, кто хочет думать и действовать на уровне Chief Marketing Officer.
+                        </p>
+                        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                            <div style={{ background: 'rgba(139,92,246,0.15)', border: '1px solid var(--accent-color)', borderRadius: '12px', padding: '0.6rem 1.2rem', fontSize: '0.9rem', fontWeight: 600 }}>🕐 6 модулей</div>
+                            <div style={{ background: 'rgba(139,92,246,0.15)', border: '1px solid var(--accent-color)', borderRadius: '12px', padding: '0.6rem 1.2rem', fontSize: '0.9rem', fontWeight: 600 }}>👥 Закрытое сообщество</div>
+                            <div style={{ background: 'rgba(139,92,246,0.15)', border: '1px solid var(--accent-color)', borderRadius: '12px', padding: '0.6rem 1.2rem', fontSize: '0.9rem', fontWeight: 600 }}>🔁 Доступ навсегда</div>
+                        </div>
                     </div>
-                </div>
+                </Reveal>
             </div>
+
 
             {/* Modules */}
             <div className="container" style={{ padding: '4rem 0' }}>
-                <h2 className="section-title" style={{ marginBottom: '3rem' }}>Программа курса</h2>
+                <Reveal animation="fade-in-right">
+                    <h2 className="section-title" style={{ marginBottom: '3rem' }}>Программа курса</h2>
+                </Reveal>
                 <div className="service-grid-detailed">
                     {modules.map((m, i) => (
-                        <div key={i} className="audit-item" style={{ position: 'relative', overflow: 'hidden' }}>
-                            <div style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', fontSize: '3rem', fontWeight: 800, color: 'rgba(139,92,246,0.1)', lineHeight: 1 }}>{m.num}</div>
-                            <h3 style={{ color: 'var(--accent-color)' }}>{m.title}</h3>
-                            <p style={{ color: 'var(--muted-text)' }}>{m.desc}</p>
-                        </div>
+                        <Reveal animation="fade-in-bottom" delay={0.1 * i} key={i}>
+                            <div className="audit-item" style={{ position: 'relative', overflow: 'hidden' }}>
+                                <div style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', fontSize: '3rem', fontWeight: 800, color: 'rgba(139,92,246,0.1)', lineHeight: 1 }}>{m.num}</div>
+                                <h3 style={{ color: 'var(--accent-color)' }}>{m.title}</h3>
+                                <p style={{ color: 'var(--muted-text)' }}>{m.desc}</p>
+                            </div>
+                        </Reveal>
                     ))}
                 </div>
             </div>
 
+
             {/* For whom */}
             <div style={{ background: 'var(--secondary-color)', padding: '5rem 0' }}>
                 <div className="container" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
-                    <h2 className="section-title">Для кого этот курс</h2>
+                    <Reveal animation="fade-in-right">
+                        <h2 className="section-title">Для кого этот курс</h2>
+                    </Reveal>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem', marginTop: '2rem', textAlign: 'left' }}>
                         {[
                             ['🚀', 'Вы уже работаете в маркетинге 3+ лет и хотите выйти на следующий уровень'],
@@ -102,14 +114,17 @@ function CoursePage() {
                             ['💡', 'Вы хотите говорить с CEO и инвесторами на языке цифр и роста'],
                             ['🌍', 'Вы работаете с продуктами, которые нацелены на global-рынки'],
                         ].map(([icon, text], i) => (
-                            <div key={i} style={{ background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                                <span style={{ fontSize: '1.5rem' }}>{icon}</span>
-                                <p style={{ color: 'var(--muted-text)', margin: 0, fontSize: '0.95rem' }}>{text}</p>
-                            </div>
+                            <Reveal animation="fade-in-bottom" delay={0.1 * i} key={i}>
+                                <div style={{ background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+                                    <span style={{ fontSize: '1.5rem' }}>{icon}</span>
+                                    <p style={{ color: 'var(--muted-text)', margin: 0, fontSize: '0.95rem' }}>{text}</p>
+                                </div>
+                            </Reveal>
                         ))}
                     </div>
                 </div>
             </div>
+
 
             {/* Price + Form */}
             <div className="container" style={{ padding: '5rem 0', maxWidth: '700px', margin: '0 auto' }}>

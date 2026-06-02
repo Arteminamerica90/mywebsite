@@ -1,6 +1,8 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import { Reveal } from '../components/Reveal';
+
 
 const blogPosts = {
     'app-advertising': {
@@ -171,20 +173,34 @@ function BlogPost() {
         <div className="blog-post-page">
             <Navbar />
 
-            <div className="container post-content fade-in" style={{ paddingTop: '120px' }}>
-                <div className="post-header">
-                    <span className="post-date">{post.date}</span>
-                    <h1>{post.title}</h1>
-                </div>
-                <div className="post-body">
-                    {post.content.split('\n').map((paragraph, i) => (
-                        <p key={i}>{paragraph}</p>
-                    ))}
-                </div>
-                <div className="post-footer">
-                    <Link to="/" className="btn-primary">Вернуться на главную</Link>
-                </div>
+            <div className="container post-content" style={{ paddingTop: '120px' }}>
+                <Reveal animation="fade-in-right">
+                    <div className="post-header">
+                        <span className="post-date">{post.date}</span>
+                        <h1>{post.title}</h1>
+                    </div>
+                </Reveal>
+                <Reveal animation="fade-in-bottom" delay={0.2}>
+                    <div className="post-body">
+                        {post.content.split('\n').map((block, i) => {
+                            if (!block.trim()) return null;
+                            // Split by sentence but keep common abbreviations together
+                            const sentences = block.split(/(?<=[.!?])\s+(?=[A-ZА-Я])/);
+                            return sentences.map((sentence, j) => (
+                                <p key={`${i}-${j}`} style={{ marginBottom: '1.5rem' }}>
+                                    {sentence.trim()}
+                                </p>
+                            ));
+                        })}
+                    </div>
+                </Reveal>
+                <Reveal animation="fade-in-bottom" delay={0.4}>
+                    <div className="post-footer">
+                        <Link to="/" className="btn-primary">Вернуться на главную</Link>
+                    </div>
+                </Reveal>
             </div>
+
         </div>
     );
 }

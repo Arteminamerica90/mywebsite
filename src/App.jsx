@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
+import WorkPage from './pages/WorkPage';
+import BlogPage from './pages/BlogPage';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
 import BlogPost from './pages/BlogPost';
@@ -8,6 +10,7 @@ import ServiceAudit from './pages/ServiceAudit';
 import ServiceDev from './pages/ServiceDev';
 import ServiceAnalysis from './pages/ServiceAnalysis';
 import CasePage from './pages/CasePage';
+import CareerPage from './pages/CareerPage';
 import { AppStorePage, AppSalesPage, WebSalesPage, HrPage } from './pages/ServicePages';
 import CoursePage from './pages/CoursePage';
 import CourseLogin from './pages/CourseLogin';
@@ -28,7 +31,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<WorkPage />} />
+        <Route path="/work" element={<WorkPage />} />
+        <Route path="/blog" element={<BlogPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/services/audit" element={<ServiceAudit />} />
@@ -39,6 +44,7 @@ function App() {
         <Route path="/services/app-sales" element={<AppSalesPage />} />
         <Route path="/services/web-sales" element={<WebSalesPage />} />
         <Route path="/services/hr" element={<HrPage />} />
+        <Route path="/career" element={<CareerPage />} />
         <Route path="/course" element={<CoursePage />} />
         <Route path="/course/login" element={<CourseLogin />} />
         <Route path="/course/dashboard" element={<ProtectedCourseRoute><CourseDashboard /></ProtectedCourseRoute>} />

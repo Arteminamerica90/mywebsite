@@ -1,6 +1,8 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import ContactSection from '../components/ContactSection';
+import { Reveal } from '../components/Reveal';
+
 
 const servicePages = {
     'appstore': {
@@ -57,24 +59,33 @@ function GeneralServicePage({ serviceId }) {
     return (
         <div className="service-page">
             <Navbar />
-            <div className="container service-content fade-in" style={{ paddingTop: '100px' }}>
-                <div className="service-header">
-                    <div className="badge">{service.icon} Услуга</div>
-                    <h1>{service.title}</h1>
-                    <p className="lead">{service.subtitle}</p>
-                </div>
+            <div className="container service-content" style={{ paddingTop: '100px' }}>
+                <Reveal animation="fade-in-right">
+                    <div className="service-header">
+
+                        <h1>{service.title}</h1>
+                        <p className="lead">{service.subtitle}</p>
+                    </div>
+                </Reveal>
                 <div className="service-grid-detailed">
                     {service.sections.map((section, i) => (
-                        <div key={i} className="audit-item clickable-card" onClick={() => {
-                            const el = document.getElementById('contact');
-                            if (el) el.scrollIntoView({ behavior: 'smooth' });
-                        }}>
-                            <h3>{section.title}</h3>
-                            <p>{section.text}</p>
-                        </div>
+                        <Reveal animation="fade-in-bottom" delay={0.1 * i} key={i}>
+                            <div className="audit-item clickable-card" onClick={() => {
+                                const el = document.getElementById('contact');
+                                if (el) el.scrollIntoView({ behavior: 'smooth' });
+                            }}>
+                                <h3>{section.title}</h3>
+                                <div>
+                                    {section.text.split(/(?<=[.!?])\s+(?=[A-ZА-Я])/).map((sentence, j) => (
+                                        <p key={j} style={{ marginBottom: '1rem' }}>{sentence.trim()}</p>
+                                    ))}
+                                </div>
+                            </div>
+                        </Reveal>
                     ))}
                 </div>
             </div>
+
             <ContactSection />
         </div>
     );

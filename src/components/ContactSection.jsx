@@ -1,27 +1,34 @@
 import React from 'react';
 import ContactForm from './ContactForm';
+import { Reveal } from './Reveal';
 
 function ContactSection() {
     return (
         <section id="contact" className="contact">
             <div className="container">
-                <h2 className="section-title">Готовы к <span className="gradient-text">росту?</span></h2>
+                <Reveal animation="fade-in-right">
+                    <h2 className="section-title">Готовы к <span className="gradient-text">росту?</span></h2>
+                </Reveal>
                 <div className="contact-container">
-                    <div className="contact-info">
-                        <h3>Свяжитесь с нами</h3>
-                        <p>Оставьте заявку, и мы свяжемся с вами в ближайшее время для обсуждения вашего проекта.</p>
-                        <div className="contact-details">
-                            <div className="detail-item">
-                                <span>✉️</span>
-                                <p>arteminamerica@mail.ru</p>
-                            </div>
-                            <div className="detail-item">
-                                <span>📞</span>
-                                <p>+7 915 033 1967</p>
+                    <Reveal animation="fade-in-bottom" className="contact-info">
+                        <div>
+                            <h3>Свяжитесь с нами</h3>
+                            <p>Оставьте заявку, и мы свяжемся с вами в ближайшее время для обсуждения вашего проекта.</p>
+                            <div className="contact-details">
+                                <div className="detail-item">
+                                    <span>✉️</span>
+                                    <p>arteminamerica@mail.ru</p>
+                                </div>
+                                <div className="detail-item">
+                                    <span>📞</span>
+                                    <p>+7 915 033 1967</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <ContactForm />
+                    </Reveal>
+                    <Reveal animation="fade-in-bottom" delay={0.2}>
+                        <ContactForm />
+                    </Reveal>
                 </div>
             </div>
         </section>
