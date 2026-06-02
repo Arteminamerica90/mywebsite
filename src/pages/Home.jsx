@@ -50,33 +50,18 @@ function Home() {
                         {cases.map((item, index) => (
                             <Link to={`/cases/${item.id}`} className="portfolio-card-link" key={index}>
                                 <div className="portfolio-card reveal fade-in-bottom" style={{ transitionDelay: `${index * 0.1}s` }}>
-
-                                    <div className="portfolio-img-placeholder" style={{ 
-                                        position: 'relative', 
-                                        width: '100%', 
-                                        height: '100%',
-                                        backgroundColor: '#fff',
-                                        overflow: 'hidden'
-                                    }}>
-                                        {item.img ? (
+                                    <div className="portfolio-img-container">
+                                        {item.img && (
                                             <img 
                                                 src={item.img} 
                                                 alt={item.title} 
-                                                style={{ width: '100%', height: '100%', objectFit: 'fill', display: 'block' }} 
                                             />
-                                        ) : null}
-                                        <div className="portfolio-overlay" style={{ background: 'linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%)', padding: '2rem' }}>
-                                            <span className="portfolio-category" style={{ color: 'var(--accent-color)', fontWeight: 700 }}>{item.category}</span>
-                                            <h3 style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>{item.title}</h3>
-                                            <p style={{ 
-                                                color: 'var(--accent-color)', 
-                                                fontWeight: 900, 
-                                                fontSize: '1.3rem',
-                                                textShadow: '0 2px 10px rgba(0,0,0,0.9)',
-                                                marginTop: '0.5rem',
-                                                lineHeight: '1.2'
-                                            }}>{item.desc}</p>
-                                        </div>
+                                        )}
+                                    </div>
+                                    <div className="portfolio-content">
+                                        <span className="portfolio-category">{item.category}</span>
+                                        <h3>{item.title}</h3>
+                                        <p>{item.desc}</p>
                                     </div>
                                 </div>
                             </Link>
