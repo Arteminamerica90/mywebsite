@@ -64,7 +64,7 @@ function WorkPage() {
                     <Reveal animation="fade-in-right">
                         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                             <h2 className="section-title" style={{ marginBottom: '1rem' }}>Что Мы Создаем</h2>
-                            <p className="lead" style={{ margin: '0 auto' }}>Инновационные решения, которые оставляют след — то, что мы создаем для вашего цифрового успеха.</p>
+                            <p className="lead" style={{ margin: '0 auto' }}>Создаем эффективные цифровые решения для реального роста вашего бизнеса.</p>
                         </div>
                     </Reveal>
 
