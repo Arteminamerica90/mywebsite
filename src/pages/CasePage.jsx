@@ -4,6 +4,8 @@ import Navbar from '../components/Navbar';
 import ContactSection from '../components/ContactSection';
 import CaseStats from '../components/CaseStats';
 import FitonStats from '../components/FitonStats';
+import DeliveryStats from '../components/DeliveryStats';
+import CalmStats from '../components/CalmStats';
 import { Reveal } from '../components/Reveal';
 import { CountUp } from '../components/CountUp';
 
@@ -141,12 +143,7 @@ const cases = {
         tagline: 'Привлечение осознанной аудитории',
         image: '/calm.png',
         intro: 'Calm — мировой лидер в категории Mental Health. Специфика продукта требовала особого подхода к коммуникации в рекламе.',
-        sections: [
-            {
-                title: '🧘 Специфика',
-                text: 'Создавали нативные и ненавязчивые рекламные форматы, которые органично вписываются в ленту и не нарушают «медитативное» восприятие продукта. Детальный кейс в разработке.'
-            }
-        ]
+        sections: []
     },
     'delivery': {
         title: 'Delivery Club',
@@ -155,12 +152,7 @@ const cases = {
         tagline: 'Лидерство на рынке доставки еды',
         image: '/delivery.png',
         intro: 'Delivery Club — один из лидеров рынка доставки еды в России. Работали над укреплением позиций и привлечением новой аудитории.',
-        sections: [
-            {
-                title: '🚀 Задача',
-                text: 'Удержание лидерских позиций в условиях высокой конкуренции со стороны Яндекс.Еды и Самоката. Детальный кейс в разработке.'
-            }
-        ]
+        sections: []
     },
     'fiton': {
         title: 'FitOn',
@@ -277,6 +269,14 @@ function CasePage() {
                 ) : id === 'fiton' ? (
                     <Reveal animation="fade-in-bottom" delay={0.3}>
                         <FitonStats />
+                    </Reveal>
+                ) : id === 'delivery' ? (
+                    <Reveal animation="fade-in-bottom" delay={0.3}>
+                        <DeliveryStats />
+                    </Reveal>
+                ) : id === 'calm' ? (
+                    <Reveal animation="fade-in-bottom" delay={0.3}>
+                        <CalmStats />
                     </Reveal>
                 ) : (
                     <div className="service-grid-detailed" style={{ marginBottom: '4rem' }}>
