@@ -8,7 +8,7 @@ const CalmStats = () => {
       {/* Card 1: Results */}
       <div className="stat-card">
         <div className="stat-header">
-          <h3 className="stat-title"><CountUp end={50000} suffix="+" /> Покупателей</h3>
+          <h3 className="stat-title"><CountUp end={150000} suffix="+" /> Покупателей</h3>
           <div className="badge">Ментальное здоровье</div>
         </div>
         <div className="stat-content">
