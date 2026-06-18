@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import heroImg from '../assets/hero.png';
 import ContactSection from '../components/ContactSection';
@@ -202,16 +203,7 @@ function Home() {
 
             <ContactSection />
 
-            <footer className="footer">
-                <div className="container footer-container">
-                    <p>&copy; 2024 Media CPA-Partners. Все права защищены.</p>
-                    <div className="social-links">
-                        <a href="#">Twitter</a>
-                        <a href="#">LinkedIn</a>
-                        <a href="#">Instagram</a>
-                    </div>
-                </div>
-            </footer>
+            <Footer />
         </div>
     );
 }

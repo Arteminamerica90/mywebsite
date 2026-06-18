@@ -12,6 +12,7 @@ import ServiceAnalysis from './pages/ServiceAnalysis';
 import CasePage from './pages/CasePage';
 import CareerPage from './pages/CareerPage';
 import { AppStorePage, AppSalesPage, WebSalesPage, HrPage } from './pages/ServicePages';
+import StartupsPage from './pages/StartupsPage';
 import CoursePage from './pages/CoursePage';
 import CourseLogin from './pages/CourseLogin';
 import CourseDashboard from './pages/CourseDashboard';
@@ -45,6 +46,7 @@ function App() {
         <Route path="/services/web-sales" element={<WebSalesPage />} />
         <Route path="/services/hr" element={<HrPage />} />
         <Route path="/career" element={<CareerPage />} />
+        <Route path="/startups" element={<StartupsPage />} />
         <Route path="/course" element={<CoursePage />} />
         <Route path="/course/login" element={<CourseLogin />} />
         <Route path="/course/dashboard" element={<ProtectedCourseRoute><CourseDashboard /></ProtectedCourseRoute>} />

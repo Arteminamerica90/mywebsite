@@ -986,3 +986,238 @@
     padding: 2rem;
   }
 }
+/* ==========================================================================
+   Startups Page & Tinder Mechanic Styles
+   ========================================================================== */
+
+.experience-form-card {
+    background: #1A1D24;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 3rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.experience-form-card .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.experience-form-card input,
+.experience-form-card select,
+.experience-form-card textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    background: #0F1218;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.experience-form-card input:focus,
+.experience-form-card select:focus,
+.experience-form-card textarea:focus {
+    border-color: #8B5CF6;
+    outline: none;
+}
+
+.experience-form-card textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.tinder-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.tinder-card-stack {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tinder-card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #1A1D24;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    cursor: grab;
+    display: flex;
+    flex-direction: column;
+}
+
+.tinder-card:active {
+    cursor: grabbing;
+}
+
+.tinder-card-image {
+    width: 100%;
+    height: 50%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.tinder-overlay {
+    position: absolute;
+    top: 20px;
+    padding: 5px 10px;
+    border: 3px solid;
+    border-radius: 8px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.tinder-overlay.like {
+    left: 20px;
+    color: #4CAF50;
+    border-color: #4CAF50;
+    transform: rotate(-15deg);
+}
+
+.tinder-overlay.nope {
+    right: 20px;
+    color: #F44336;
+    border-color: #F44336;
+    transform: rotate(15deg);
+}
+
+.tinder-card-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.startup-category {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #8B5CF6;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.tinder-card-content h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.8rem;
+}
+
+.startup-desc {
+    color: #A0A0A0;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.startup-looking-for {
+    background: rgba(139, 92, 246, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #8B5CF6;
+}
+
+.startup-looking-for strong {
+    display: block;
+    color: #E2E8F0;
+    margin-bottom: 0.5rem;
+}
+
+.startup-looking-for p {
+    margin: 0;
+    color: #A0A0A0;
+    font-size: 0.9rem;
+}
+
+.tinder-actions {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.swipe-btn {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: #1A1D24;
+}
+
+.swipe-btn:hover {
+    transform: scale(1.1);
+}
+
+.swipe-btn.nope-btn {
+    color: #F44336;
+    border: 2px solid rgba(244, 67, 54, 0.2);
+}
+
+.swipe-btn.like-btn {
+    color: #4CAF50;
+    border: 2px solid rgba(76, 175, 80, 0.2);
+}
+
+.tinder-end-screen {
+    text-align: center;
+    padding: 3rem;
+    background: #1A1D24;
+    border-radius: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.tinder-end-screen h2 {
+    margin-bottom: 1rem;
+    color: #8B5CF6;
+}
+
+.matches-list {
+    margin: 2rem 0;
+    text-align: left;
+    background: #0F1218;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.matches-list h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.matches-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.matches-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.matches-list li:last-child {
+    border-bottom: none;
+}

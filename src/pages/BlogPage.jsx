@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import ContactSection from '../components/ContactSection';
 import { Reveal } from '../components/Reveal';
 import { blogPosts } from '../data/content';
@@ -34,11 +35,7 @@ function BlogPage() {
 
             <ContactSection />
             
-            <footer className="footer">
-                <div className="container footer-container">
-                    <p>&copy; 2024 Media CPA-Partners. Все права защищены.</p>
-                </div>
-            </footer>
+            <Footer />
         </div>
     );
 }

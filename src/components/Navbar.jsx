@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
     const [servicesOpen, setServicesOpen] = useState(false);
+    const [aboutOpen, setAboutOpen] = useState(false);
 
     return (
         <nav className="navbar">
@@ -36,14 +37,26 @@ function Navbar() {
                     </li>
                     <li><Link to="/services/audit">Аудит</Link></li>
                     <li><Link to="/services/dev">Разработка</Link></li>
-                    <li><Link to="/services/analysis">Анализ</Link></li>
-                    <li><Link to="/blog">Блог</Link></li>
                     <li><Link to="/course">🎓 Курс</Link></li>
-                    <li><Link to="/work">Кейсы</Link></li>
-                    <li>
-                        <Link to="/career">Карьера</Link>
+                    <li
+                        className="nav-dropdown-wrapper"
+                        onMouseEnter={() => setAboutOpen(true)}
+                        onMouseLeave={() => setAboutOpen(false)}
+                    >
+                        <a href="#" className="nav-dropdown-trigger" onClick={(e) => e.preventDefault()}>
+                            О нас <span className="dropdown-arrow">▾</span>
+                        </a>
+                        {aboutOpen && (
+                            <ul className="nav-dropdown-menu">
+                                <li><Link to="/services/analysis">Анализ</Link></li>
+                                <li><Link to="/blog">Блог</Link></li>
+                                <li><Link to="/work">Кейсы</Link></li>
+                                <li><Link to="/career">Карьера</Link></li>
+                                <li><Link to="/startups">🚀 Стартапы</Link></li>
+                                <li><a href="/#contact">Контакты</a></li>
+                            </ul>
+                        )}
                     </li>
-                    <li><a href="/#contact">Контакты</a></li>
                 </ul>
             </div>
         </nav>
