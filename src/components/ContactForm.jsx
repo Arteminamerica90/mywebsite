@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 function ContactForm() {
-    const [formData, setFormData] = useState({ name: '', email: '', contact: '', message: '' });
+    const [formData, setFormData] = useState({ name: '', email: '', contact: '', message: '', consent: false });
     const [status, setStatus] = useState('');
 
     const handleSubmit = async (e) => {
@@ -10,21 +10,13 @@ function ContactForm() {
         setStatus('sending');
 
         try {
-            // 1. Save to localStorage for the local Admin Panel
-            const existingMessages = JSON.parse(localStorage.getItem('admin_messages') || '[]');
-            const newMessage = { ...formData, id: Date.now(), date: new Date().toLocaleString() };
-            localStorage.setItem('admin_messages', JSON.stringify([newMessage, ...existingMessages]));
-
-            // 2. Send to API (Telegram, Email)
             await axios.post('/api/contact', formData);
 
             setStatus('success');
-            setFormData({ name: '', email: '', contact: '', message: '' });
+            setFormData({ name: '', email: '', contact: '', message: '', consent: false });
         } catch (error) {
             console.error('Error sending message:', error);
-            // Even if API fails, we saved to localStorage for the admin panel
-            setStatus('success');
-            setFormData({ name: '', email: '', contact: '', message: '' });
+            setStatus('error');
         }
     };
 
@@ -39,6 +31,10 @@ function ContactForm() {
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 />
             </div>
+            <label className="consent-label">
+                <input type="checkbox" required checked={formData.consent} onChange={(e) => setFormData({ ...formData, consent: e.target.checked })} />
+                <span>Я согласен(на) на обработку моих данных для ответа на заявку согласно <a href="/privacy">политике конфиденциальности</a>.</span>
+            </label>
             <div className="form-group">
                 <input
                     type="email"
@@ -72,6 +68,7 @@ function ContactForm() {
                 {status === 'sending' ? 'Отправка...' : 'Отправить заявку'}
             </button>
             {status === 'success' && <p className="success-msg">Спасибо! Мы скоро свяжемся с вами.</p>}
+            {status === 'error' && <p className="error-msg">Не удалось отправить заявку. Напишите нам напрямую: arteminamerica@mail.ru.</p>}
         </form>
     );
 }

@@ -13,14 +13,14 @@ function ContactSection() {
                     <Reveal animation="fade-in-bottom" className="contact-info">
                         <div>
                             <h3>Свяжитесь с нами</h3>
-                            <p>Оставьте заявку, и мы свяжемся с вами в ближайшее время для обсуждения вашего проекта.</p>
+                            <p>Расскажите о задаче — обсудим, подходим ли мы друг другу, и согласуем следующий шаг.</p>
                             <div className="contact-details">
                                 <div className="detail-item">
-                                    <span>✉️</span>
+                                    <span className="detail-label">Email</span>
                                     <p>arteminamerica@mail.ru</p>
                                 </div>
                                 <div className="detail-item">
-                                    <span>📞</span>
+                                    <span className="detail-label">Контакт</span>
                                     <p>+7 915 033 1967</p>
                                 </div>
                             </div>

@@ -1,50 +1,79 @@
+import nodemailer from 'nodemailer';
+
+const smtpHost = process.env.SMTP_HOST;
+const smtpPort = Number(process.env.SMTP_PORT || 465);
+const smtpUser = process.env.SMTP_USER;
+const smtpPass = process.env.SMTP_PASS;
+const mailFrom = process.env.MAIL_FROM;
+const mailTo = process.env.MAIL_TO;
+const siteName = process.env.SITE_NAME || 'My Website';
+
+const clean = (value, max) => String(value || '').trim().slice(0, max);
+const escapeHtml = (value) => value.replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
+
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
         return res.status(405).json({ message: 'Method not allowed' });
     }
 
-    // Vercel may not auto-parse body in some configurations
     let body = req.body;
     if (typeof body === 'string') {
         try {
             body = JSON.parse(body);
-        } catch (e) {
+        } catch {
             return res.status(400).json({ message: 'Invalid JSON body' });
         }
     }
 
-    const { name, email, contact, message } = body || {};
+    const { consent } = body || {};
+    const name = clean(body?.name, 120);
+    const email = clean(body?.email, 254).toLowerCase();
+    const contact = clean(body?.contact, 80);
+    const message = clean(body?.message, 4000);
 
-    if (!name || !email || !contact || !message) {
-        return res.status(400).json({ message: 'Missing required fields', received: body });
+    if (!name || !email || !contact || !message || consent !== true || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        return res.status(400).json({ message: 'Invalid request' });
     }
 
-    const botToken = '8697927420:AAFjapgHaMhsgSUkckalr-fjyGu5ziEbxII';
-    const chatId = '155778404';
+    if (!smtpHost || !smtpUser || !smtpPass || !mailFrom || !mailTo) {
+        return res.status(500).json({ message: 'Service unavailable' });
+    }
 
-    const text = `🚀 Новая заявка (Media CPA)!\n\nИмя: ${name}\nEmail: ${email}\nКонтакт: ${contact}\nСообщение: ${message}`;
+    const subject = `Новая заявка с сайта ${siteName}`;
+    const text = [
+        `Новая заявка с сайта ${siteName}`,
+        '',
+        `Имя: ${name}`,
+        `Email: ${email}`,
+        `Контакт: ${contact}`,
+        '',
+        'Сообщение:',
+        message,
+    ].join('\n');
 
     try {
-        const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                chat_id: chatId,
-                text: text,
-            }),
+        const transporter = nodemailer.createTransport({
+            host: smtpHost,
+            port: smtpPort,
+            secure: smtpPort === 465,
+            auth: {
+                user: smtpUser,
+                pass: smtpPass,
+            },
         });
 
-        const data = await response.json();
+        await transporter.sendMail({
+            from: `"${siteName}" <${mailFrom}>`,
+            to: mailTo,
+            replyTo: `"${name}" <${email}>`,
+            subject,
+            text,
+            html: escapeHtml(text).replace(/\n/g, '<br />'),
+        });
 
-        if (response.ok) {
-            return res.status(200).json({ message: 'Success' });
-        } else {
-            console.error('Telegram API Error:', data);
-            return res.status(500).json({ message: 'Telegram Error', details: data });
-        }
+        return res.status(200).json({ message: 'Success' });
     } catch (error) {
         console.error('Server Error:', error);
-        return res.status(500).json({ message: 'Internal Server Error', details: error.message });
+        return res.status(500).json({ message: 'Internal Server Error' });
     }
 }
-

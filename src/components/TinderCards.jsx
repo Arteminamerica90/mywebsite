@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, useMotionValue, useTransform, AnimatePresence } from 'framer-motion';
+import { useMotionValue, useTransform, AnimatePresence } from 'framer-motion';
 import { X, Heart } from 'lucide-react';
 
 const DUMMY_STARTUPS = [
@@ -9,7 +9,6 @@ const DUMMY_STARTUPS = [
         category: 'GreenTech',
         description: 'Приложение для отслеживания углеродного следа пользователя и рекомендаций по экологичному образу жизни.',
         lookingFor: 'Ищем Senior React Native разработчика для лида мобильной команды.',
-        image: 'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=600&q=80'
     },
     {
         id: 2,
@@ -17,7 +16,6 @@ const DUMMY_STARTUPS = [
         category: 'FinTech',
         description: 'B2B платформа для автоматизации финансового учета и прогнозирования кассовых разрывов с помощью ИИ.',
         lookingFor: 'Нужен маркетолог (B2B) с опытом вывода продуктов на рынки СНГ и Европы.',
-        image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80'
     },
     {
         id: 3,
@@ -25,7 +23,6 @@ const DUMMY_STARTUPS = [
         category: 'HealthTech',
         description: 'Сервис поиска профильных врачей по сложным диагнозам на основе анализа медицинских карт.',
         lookingFor: 'Ищем Product Manager / Co-founder с экспертизой в HealthTech.',
-        image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80'
     },
     {
         id: 4,
@@ -33,7 +30,6 @@ const DUMMY_STARTUPS = [
         category: 'GameFi',
         description: 'Децентрализованная гильдия для геймеров с распределением прибыли от внутриигровых активов.',
         lookingFor: 'Ищем UI/UX дизайнера с любовью к геймдеву и Web3.',
-        image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80'
     }
 ];
 
@@ -66,7 +62,7 @@ const TinderCard = ({ startup, removeCard, active }) => {
             exit={{ x: x.get() > 0 ? 300 : -300, opacity: 0, transition: { duration: 0.2 } }}
             whileDrag={{ scale: 1.05 }}
         >
-            <div className="tinder-card-image" style={{ backgroundImage: `url(${startup.image})` }}>
+            <div className="tinder-card-image startup-card-visual" aria-hidden="true">
                 <motion.div className="tinder-overlay like" style={{ opacity: likeOpacity }}>
                     LIKE
                 </motion.div>
@@ -89,7 +85,7 @@ const TinderCard = ({ startup, removeCard, active }) => {
     );
 };
 
-const TinderCards = ({ userData }) => {
+const TinderCards = () => {
     const [cards, setCards] = useState(DUMMY_STARTUPS);
     const [matches, setMatches] = useState([]);
 
@@ -121,6 +117,7 @@ const TinderCards = ({ userData }) => {
 
     return (
         <div className="tinder-container">
+            <p className="startup-demo-note">Демонстрация интерфейса: карточки вымышлены, данные никуда не отправляются, совпадения случайны.</p>
             <div className="tinder-card-stack">
                 <AnimatePresence>
                     {cards.map((startup, index) => (

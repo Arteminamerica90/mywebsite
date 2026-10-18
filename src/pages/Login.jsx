@@ -67,7 +67,7 @@ function Login() {
             <div className="container login-container">
                 <Reveal animation="fade-in-bottom">
                     <div className="login-card">
-                        <div className="logo">Media CPA-Partners</div>
+                        <div className="logo">adcparium</div>
 
                         {status === 'login' && (
                             <>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import { stripIcons } from '../utils/stripIcons';
 
 function CourseLogin() {
     const [email, setEmail] = useState('');
@@ -28,9 +29,8 @@ function CourseLogin() {
             <Navbar />
             <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '80px' }}>
                 <div className="login-card" style={{ maxWidth: '420px', width: '100%' }}>
-                    <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🎓</div>
-                    <div className="logo" style={{ marginBottom: '0.5rem' }}>Media CPA-Partners</div>
-                    <h2 style={{ marginBottom: '0.5rem', fontSize: '1.3rem' }}>Личный кабинет курса</h2>
+                    <div className="logo" style={{ marginBottom: '0.5rem' }}>adcparium</div>
+                    <h2 style={{ marginBottom: '0.5rem', fontSize: '1.3rem' }}>{stripIcons('Личный кабинет курса')}</h2>
                     <p style={{ color: 'var(--muted-text)', fontSize: '0.9rem', marginBottom: '2rem' }}>Введите email, на который вы регистрировались</p>
 
                     <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>

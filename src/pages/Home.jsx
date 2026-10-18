@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar';
 import { useReveal } from '../hooks/useReveal';
 import { CountUp } from '../components/CountUp';
 import { Reveal } from '../components/Reveal';
+import { stripIcons } from '../utils/stripIcons';
 
 
 function Home() {
@@ -107,36 +108,31 @@ function Home() {
                     <div className="create-grid">
                         {[
                             { 
-                                icon: '🚀', 
                                 title: 'SEO-продвижение', 
                                 desc: 'Оптимизируем ваш сайт для улучшения его видимости в поисковых системах.',
                                 extra: 'Мы проводим всесторонний анализ вашего сайта и оптимизируем его, чтобы сделать его более видимым для поисковых систем. Мы работаем над ключевыми словами, внутренней структурой сайта, оптимизацией контента и другими факторами для повышения вашего рейтинга в результатах поиска.'
                             },
                             { 
-                                icon: '📱', 
                                 title: 'Продвижение приложений', 
                                 desc: 'Продвижение мобильных приложений — наша основная задача.',
                                 extra: 'Мы продвигаем ваше мобильное приложение от ранних этапов медиапланирования до анализа и оптимизации трафика. Мы используем топовые in-app платформы, источники социального трафика, частные DSP, OEM-трафик, собственную аналитику и многое другое.'
                             },
                             { 
-                                icon: '🌐', 
                                 title: 'Контекстная реклама', 
                                 desc: 'Создаем и оптимизируем рекламные кампании на различных платформах.',
                                 extra: 'Мы создаем и оптимизируем кампании контекстной рекламы для привлечения целевой аудитории на таких платформах, как Google Ads. Мы подбираем ключевые слова, создаем убедительные объявления и оптимизируем ставки для максимизации вашей конверсии.'
                             },
                             { 
-                                icon: '🔗', title: 'Программатик', 
+                                title: 'Программатик', 
                                 desc: 'Работаем с ведущими программатик-источниками (CPC/CPM/CPI) для прорывного продвижения вашего продукта.',
                                 extra: 'Мы сотрудничаем с ведущими программатик-источниками на рынке, работая по моделям CPC/CPM/CPI, чтобы вывести продвижение вашего продукта на новый уровень.'
                             },
                             { 
-                                icon: '🎯', 
                                 title: 'Ретаргетинг', 
                                 desc: 'Удерживайте пользователей, повышайте RR и LTV, возвращая знакомую аудиторию к вашим продуктам.',
                                 extra: 'Трафик ретаргетинга позволяет нам возвращать пользователей, которые ранее взаимодействовали с вашими продуктами, на ваш сайт или в мобильное приложение. Эта стратегия помогает удерживать пользователей, повышать показатели RR и LTV, а также расширять охват целевой аудитории.'
                             },
                             { 
-                                icon: '📊', 
                                 title: 'Разработка приложений', 
                                 desc: 'Наша команда поможет вам во всем, что связано с разработкой мобильных приложений.',
                                 extra: 'Наша команда экспертов поможет вам во всех аспектах разработки мобильных приложений: от расчета бюджета до финального дизайна и запуска в Google Play, App Store или альтернативных магазинах.'
@@ -144,12 +140,11 @@ function Home() {
                         ].map((item, index) => (
                             <Reveal animation="fade-in-bottom" delay={index * 0.1} key={index}>
                                 <div className="create-card">
-                                    <div className="create-icon">{item.icon}</div>
-                                    <h3>{item.title}</h3>
-                                    <p>{item.desc}</p>
+                                    <h3>{stripIcons(item.title)}</h3>
+                                    <p>{stripIcons(item.desc)}</p>
                                     
                                     <div className={`create-extra-content ${expandedIndex === index ? 'expanded' : ''}`}>
-                                        <p>{item.extra}</p>
+                                        <p>{stripIcons(item.extra)}</p>
                                     </div>
 
                                     <button className="create-learn-more" onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}>
@@ -175,21 +170,16 @@ function Home() {
                     <div className="services-grid">
                         <div className="service-card reveal fade-in-bottom">
 
-                            <div className="service-icon">✦</div>
                             <h3>Аудит приложения</h3>
                             <p>Глубокий анализ вашего продукта, выявление ошибок и поиск скрытых возможностей для роста.</p>
                             <Link to="/services/audit" className="read-more">Подробнее →</Link>
                         </div>
                         <div className="service-card reveal fade-in-bottom">
-                            <div className="service-icon">⚡</div>
-
                             <h3>Разработка</h3>
                             <p>Создаем быстрые, адаптивные сайты и мобильные приложения на острие технологий.</p>
                             <Link to="/services/dev" className="read-more">Подробнее →</Link>
                         </div>
                         <div className="service-card reveal fade-in-bottom">
-                            <div className="service-icon">◈</div>
-
                             <h3>Конкурентный анализ</h3>
                             <p>Узнайте стратегии и креативы конкурентов. Будьте на шаг впереди рынка.</p>
                             <Link to="/services/analysis" className="read-more">Подробнее →</Link>

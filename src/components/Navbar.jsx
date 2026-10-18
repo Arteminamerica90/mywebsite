@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { stripIcons } from '../utils/stripIcons';
 
 function Navbar() {
     const [servicesOpen, setServicesOpen] = useState(false);
@@ -8,7 +9,7 @@ function Navbar() {
     return (
         <nav className="navbar">
             <div className="container nav-container">
-                <Link to="/" className="logo">Media CPA-Partners</Link>
+                <Link to="/" className="logo">adcparium</Link>
                 <ul className="nav-links">
                     <li
                         className="nav-dropdown-wrapper"
@@ -21,23 +22,22 @@ function Navbar() {
                         {servicesOpen && (
                             <ul className="nav-dropdown-menu">
                                 <li>
-                                    <Link to="/services/appstore">📱 Публикация в AppStore</Link>
+                                    <Link to="/services/appstore">{stripIcons('Публикация в AppStore')}</Link>
                                 </li>
                                 <li>
-                                    <Link to="/services/app-sales">📈 Усиление продаж через приложение</Link>
+                                    <Link to="/services/app-sales">{stripIcons('Усиление продаж через приложение')}</Link>
                                 </li>
                                 <li>
-                                    <Link to="/services/web-sales">🌐 Усиление через веб-сайт</Link>
+                                    <Link to="/services/web-sales">{stripIcons('Усиление через веб-сайт')}</Link>
                                 </li>
                                 <li>
-                                    <Link to="/services/hr">👥 HR / Поиск талантов</Link>
+                                    <Link to="/services/hr">{stripIcons('HR / Поиск талантов')}</Link>
                                 </li>
                             </ul>
                         )}
                     </li>
                     <li><Link to="/services/audit">Аудит</Link></li>
                     <li><Link to="/services/dev">Разработка</Link></li>
-                    <li><Link to="/course">🎓 Курс</Link></li>
                     <li
                         className="nav-dropdown-wrapper"
                         onMouseEnter={() => setAboutOpen(true)}
@@ -52,7 +52,7 @@ function Navbar() {
                                 <li><Link to="/blog">Блог</Link></li>
                                 <li><Link to="/work">Кейсы</Link></li>
                                 <li><Link to="/career">Карьера</Link></li>
-                                <li><Link to="/startups">🚀 Стартапы</Link></li>
+                                <li><Link to="/startups">Стартапы</Link></li>
                                 <li><a href="/#contact">Контакты</a></li>
                             </ul>
                         )}
@@ -64,4 +64,3 @@ function Navbar() {
 }
 
 export default Navbar;
-

@@ -13,15 +13,15 @@ function Footer() {
                     <Link to="/career" style={{ color: '#E2E8F0', textDecoration: 'none', transition: 'color 0.3s' }}>Карьера</Link>
                     <Link to="/startups" style={{ color: '#E2E8F0', textDecoration: 'none', transition: 'color 0.3s' }}>Стартапы</Link>
                     <a href="/#contact" style={{ color: '#E2E8F0', textDecoration: 'none', transition: 'color 0.3s' }}>Контакты</a>
+                    <Link to="/privacy" style={{ color: '#E2E8F0', textDecoration: 'none' }}>Конфиденциальность</Link>
+                    <Link to="/terms" style={{ color: '#E2E8F0', textDecoration: 'none' }}>Условия</Link>
                 </div>
 
                 <div className="social-links" style={{ display: 'flex', gap: '1rem' }}>
-                    <a href="#" style={{ color: '#8B5CF6' }}>Twitter</a>
-                    <a href="#" style={{ color: '#8B5CF6' }}>LinkedIn</a>
-                    <a href="#" style={{ color: '#8B5CF6' }}>Instagram</a>
+                    <a href="https://www.linkedin.com/in/artem-menshikov-6171a041/" target="_blank" rel="noreferrer" style={{ color: '#8B5CF6' }}>LinkedIn Артёма</a>
                 </div>
 
-                <p style={{ color: '#64748B', fontSize: '0.9rem', margin: 0 }}>&copy; {new Date().getFullYear()} Media CPA-Partners. Все права защищены.</p>
+                <p style={{ color: '#64748B', fontSize: '0.9rem', margin: 0 }}>&copy; {new Date().getFullYear()} adcparium. Все права защищены.</p>
             </div>
         </footer>
     );

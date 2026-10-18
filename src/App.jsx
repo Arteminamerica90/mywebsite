@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Home from './pages/Home';
 import WorkPage from './pages/WorkPage';
 import BlogPage from './pages/BlogPage';
-import Admin from './pages/Admin';
-import Login from './pages/Login';
 import BlogPost from './pages/BlogPost';
 import ServiceAudit from './pages/ServiceAudit';
 import ServiceDev from './pages/ServiceDev';
@@ -14,28 +12,19 @@ import CareerPage from './pages/CareerPage';
 import { AppStorePage, AppSalesPage, WebSalesPage, HrPage } from './pages/ServicePages';
 import StartupsPage from './pages/StartupsPage';
 import CoursePage from './pages/CoursePage';
-import CourseLogin from './pages/CourseLogin';
-import CourseDashboard from './pages/CourseDashboard';
+import LegalPage from './pages/LegalPage';
+import Seo from './components/Seo';
 import './App.css';
-
-const ProtectedRoute = ({ children }) => {
-  const isAuthenticated = localStorage.getItem('admin_auth') === 'true';
-  return isAuthenticated ? children : <Navigate to="/login" />;
-};
-
-const ProtectedCourseRoute = ({ children }) => {
-  const isAuthenticated = localStorage.getItem('course_auth') !== null;
-  return isAuthenticated ? children : <Navigate to="/course/login" />;
-};
 
 function App() {
   return (
     <Router>
+      <Seo />
       <Routes>
         <Route path="/" element={<WorkPage />} />
         <Route path="/work" element={<WorkPage />} />
         <Route path="/blog" element={<BlogPage />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Navigate to="/" replace />} />
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/services/audit" element={<ServiceAudit />} />
         <Route path="/services/dev" element={<ServiceDev />} />
@@ -47,17 +36,14 @@ function App() {
         <Route path="/services/hr" element={<HrPage />} />
         <Route path="/career" element={<CareerPage />} />
         <Route path="/startups" element={<StartupsPage />} />
-        <Route path="/course" element={<CoursePage />} />
-        <Route path="/course/login" element={<CourseLogin />} />
-        <Route path="/course/dashboard" element={<ProtectedCourseRoute><CourseDashboard /></ProtectedCourseRoute>} />
-        <Route
-          path="/admin"
-          element={
-            <ProtectedRoute>
-              <Admin />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/course" element={<Navigate to="/#contact" replace />} />
+        <Route path="/course/login" element={<Navigate to="/course" replace />} />
+        <Route path="/course/dashboard" element={<Navigate to="/course" replace />} />
+        <Route path="/admin" element={<Navigate to="/" replace />} />
+        <Route path="/privacy" element={<LegalPage section="privacy" />} />
+        <Route path="/terms" element={<LegalPage section="terms" />} />
+        <Route path="/cookies" element={<LegalPage section="cookies" />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );
