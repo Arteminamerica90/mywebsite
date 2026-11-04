@@ -11,6 +11,7 @@ function Navbar() {
             <div className="container nav-container">
                 <Link to="/" className="logo">adcparium</Link>
                 <ul className="nav-links">
+
                     <li
                         className="nav-dropdown-wrapper"
                         onMouseEnter={() => setServicesOpen(true)}
@@ -21,6 +22,9 @@ function Navbar() {
                         </a>
                         {servicesOpen && (
                             <ul className="nav-dropdown-menu">
+                                <li>
+                                    <Link to="/services/audit">Аудит</Link>
+                                </li>
                                 <li>
                                     <Link to="/services/appstore">{stripIcons('Публикация в AppStore')}</Link>
                                 </li>
@@ -36,7 +40,6 @@ function Navbar() {
                             </ul>
                         )}
                     </li>
-                    <li><Link to="/services/audit">Аудит</Link></li>
                     <li><Link to="/services/dev">Разработка</Link></li>
                     <li
                         className="nav-dropdown-wrapper"
@@ -48,7 +51,7 @@ function Navbar() {
                         </a>
                         {aboutOpen && (
                             <ul className="nav-dropdown-menu">
-                                <li><Link to="/services/analysis">Анализ</Link></li>
+                                <li><Link to="/about">Обо мне</Link></li>
                                 <li><Link to="/blog">Блог</Link></li>
                                 <li><Link to="/work">Кейсы</Link></li>
                                 <li><Link to="/career">Карьера</Link></li>
@@ -58,6 +61,10 @@ function Navbar() {
                         )}
                     </li>
                 </ul>
+                <div className="nav-contacts">
+                    <a href="mailto:arteminamerica@mail.ru">arteminamerica@mail.ru</a>
+                    <a href="tel:+79150331967">+7 915 033 1967</a>
+                </div>
             </div>
         </nav>
     );

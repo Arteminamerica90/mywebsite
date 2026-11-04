@@ -23,16 +23,6 @@ function WorkPage() {
                         </div>
                     </Reveal>
 
-                    <div className="case-disclaimer">Упоминания проектов приведены как описание профессионального опыта. Товарные знаки и материалы принадлежат их правообладателям; это не означает партнёрства или одобрения. Перед публикацией каждого кейса необходимо подтвердить права и согласовать раскрытие данных.</div>
-
-                    <Reveal animation="fade-in-bottom">
-                        <section className="about-artem" aria-labelledby="about-artem-title">
-                            <h2 id="about-artem-title">Обо мне</h2>
-                            <p>Меня зовут Артём Меньшиков. Я работаю с ростом цифровых продуктов: соединяю маркетинговую стратегию, аналитику, креативы и продуктовые эксперименты, чтобы команды принимали решения на данных, а не на обещаниях.</p>
-                            <a href="https://www.linkedin.com/in/artem-menshikov-6171a041/" target="_blank" rel="noreferrer">Профиль Артёма в LinkedIn →</a>
-                        </section>
-                    </Reveal>
-
                     <div className="portfolio-grid">
                         {cases.map((item, index) => (
                             <Link to={`/cases/${item.id}`} className="portfolio-card-link" key={index}>

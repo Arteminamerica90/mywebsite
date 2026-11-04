@@ -13,6 +13,7 @@ import { AppStorePage, AppSalesPage, WebSalesPage, HrPage } from './pages/Servic
 import StartupsPage from './pages/StartupsPage';
 import CoursePage from './pages/CoursePage';
 import LegalPage from './pages/LegalPage';
+import AboutPage from './pages/AboutPage';
 import Seo from './components/Seo';
 import './App.css';
 
@@ -21,7 +22,7 @@ function App() {
     <Router>
       <Seo />
       <Routes>
-        <Route path="/" element={<WorkPage />} />
+        <Route path="/" element={<AboutPage />} />
         <Route path="/work" element={<WorkPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/login" element={<Navigate to="/" replace />} />
@@ -35,6 +36,7 @@ function App() {
         <Route path="/services/web-sales" element={<WebSalesPage />} />
         <Route path="/services/hr" element={<HrPage />} />
         <Route path="/career" element={<CareerPage />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/startups" element={<StartupsPage />} />
         <Route path="/course" element={<Navigate to="/#contact" replace />} />
         <Route path="/course/login" element={<Navigate to="/course" replace />} />

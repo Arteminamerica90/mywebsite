@@ -7,10 +7,10 @@ function Footer() {
             <div className="container footer-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
                 
                 <div className="footer-nav" style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-                    <Link to="/services/analysis" style={{ color: '#E2E8F0', textDecoration: 'none', transition: 'color 0.3s' }}>Анализ</Link>
                     <Link to="/blog" style={{ color: '#E2E8F0', textDecoration: 'none', transition: 'color 0.3s' }}>Блог</Link>
                     <Link to="/work" style={{ color: '#E2E8F0', textDecoration: 'none', transition: 'color 0.3s' }}>Кейсы</Link>
                     <Link to="/career" style={{ color: '#E2E8F0', textDecoration: 'none', transition: 'color 0.3s' }}>Карьера</Link>
+                    <Link to="/about" style={{ color: '#E2E8F0', textDecoration: 'none', transition: 'color 0.3s' }}>Обо мне</Link>
                     <Link to="/startups" style={{ color: '#E2E8F0', textDecoration: 'none', transition: 'color 0.3s' }}>Стартапы</Link>
                     <a href="/#contact" style={{ color: '#E2E8F0', textDecoration: 'none', transition: 'color 0.3s' }}>Контакты</a>
                     <Link to="/privacy" style={{ color: '#E2E8F0', textDecoration: 'none' }}>Конфиденциальность</Link>

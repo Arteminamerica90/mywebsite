@@ -191,6 +191,113 @@ const cases = {
     }
 };
 
+export function CaseDetail({ id }) {
+    const caseData = cases[id];
+
+    if (!caseData) return null;
+
+    return (
+        <>
+            <Reveal animation="fade-in-right">
+                <div className="post-header">
+                    <div className="case-header-badges" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+                        <span className="case-badge-tag" style={{ fontWeight: 800, color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '2px', textAlign: 'center', lineHeight: 1.1 }}>
+                            {caseData.tag}
+                        </span>
+                        <span className="case-badge-category" style={{ 
+                            display: 'inline-block', 
+                            background: 'rgba(139,92,246,0.15)', 
+                            color: 'var(--accent-color)', 
+                            padding: '0.5rem 1.5rem', 
+                            borderRadius: '50px', 
+                            fontWeight: 800, 
+                            textTransform: 'uppercase', 
+                            letterSpacing: '2px',
+                            textAlign: 'center'
+                        }}>
+                            {caseData.category}
+                        </span>
+                    </div>
+                    
+                    {caseData.image && (
+                        <div style={{ margin: '2rem auto', textAlign: 'center' }}>
+                            <img 
+                                src={caseData.image} 
+                                alt={caseData.title} 
+                                style={{ width: '100%', maxWidth: '300px', borderRadius: '24px' }} 
+                            />
+                        </div>
+                    )}
+
+                    <h1>{caseData.title}</h1>
+                    <p style={{ fontSize: '1.3rem', color: 'var(--accent-color)', fontWeight: 600, marginTop: '0.5rem' }}>{caseData.tagline}</p>
+                </div>
+            </Reveal>
+
+            <Reveal animation="fade-in-bottom" delay={0.2}>
+                <div className="post-body" style={{ marginBottom: '3rem' }}>
+                    <p style={{ fontSize: '1.25rem', borderLeft: '3px solid var(--accent-color)', paddingLeft: '1.5rem', color: '#fff', fontStyle: 'italic', whiteSpace: 'pre-line' }}>
+                        {caseData.intro}
+                    </p>
+                </div>
+            </Reveal>
+
+            {id === 'hfwl' ? (
+                <Reveal animation="fade-in-bottom" delay={0.3}>
+                    <CaseStats />
+                </Reveal>
+            ) : id === 'fiton' ? (
+                <Reveal animation="fade-in-bottom" delay={0.3}>
+                    <FitonStats />
+                </Reveal>
+            ) : id === 'delivery' ? (
+                <Reveal animation="fade-in-bottom" delay={0.3}>
+                    <DeliveryStats />
+                </Reveal>
+            ) : id === 'calm' ? (
+                <Reveal animation="fade-in-bottom" delay={0.3}>
+                    <CalmStats />
+                </Reveal>
+            ) : (
+                <div className="service-grid-detailed" style={{ marginBottom: '4rem' }}>
+                    {caseData.sections.map((section, i) => (
+                        <div key={i} className="audit-item">
+                            <Reveal animation="fade-in-right" delay={i * 0.1}>
+                                <h3>{section.title}</h3>
+                            </Reveal>
+                            <div>
+                                {section.content ? (
+                                    section.content.map((item, j) => (
+                                        <Reveal animation="fade-in-bottom" delay={(i * 0.2) + (j * 0.1)} key={j}>
+                                            <p style={{ color: 'var(--muted-text)', marginBottom: '1rem' }}>{item}</p>
+                                        </Reveal>
+                                    ))
+                                ) : (
+                                    section.text.split('\n').map((block, j) => {
+                                        if (!block.trim()) return null;
+                                        const sentences = block.split(/(?<=[.!?])\s+(?=[A-ZА-Я])/);
+                                        return sentences.map((sentence, k) => (
+                                            <Reveal animation="fade-in-bottom" delay={(i * 0.2) + (k * 0.1)} key={`${j}-${k}`}>
+                                                <p style={{ 
+                                                    color: sentence.trim().startsWith('•') ? '#fff' : 'var(--muted-text)', 
+                                                    marginBottom: '1rem', 
+                                                    paddingLeft: sentence.trim().startsWith('•') ? '0.5rem' : 0 
+                                                }}>
+                                                    {sentence.trim()}
+                                                </p>
+                                            </Reveal>
+                                        ));
+                                    })
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            )}
+        </>
+    );
+}
+
 function CasePage() {
     const { id } = useParams();
     const caseData = cases[id];
@@ -217,112 +324,8 @@ function CasePage() {
             <Navbar />
 
             <div className="container post-content" style={{ paddingTop: '120px' }}>
-                <Reveal animation="fade-in-right">
-                    <div className="post-header">
-                        <div className="case-header-badges" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-                            <span className="case-badge-tag" style={{ fontWeight: 800, color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '2px', textAlign: 'center', lineHeight: 1.1 }}>
-                                {caseData.tag}
-                            </span>
-                            <span className="case-badge-category" style={{ 
-                                display: 'inline-block', 
-                                background: 'rgba(139,92,246,0.15)', 
-                                color: 'var(--accent-color)', 
-                                padding: '0.5rem 1.5rem', 
-                                borderRadius: '50px', 
-                                fontWeight: 800, 
-                                textTransform: 'uppercase', 
-                                letterSpacing: '2px',
-                                textAlign: 'center'
-                            }}>
-                                {caseData.category}
-                            </span>
-                        </div>
-                        
-                        {caseData.image && (
-                            <div style={{ margin: '2rem auto', textAlign: 'center' }}>
-                                <img 
-                                    src={caseData.image} 
-                                    alt={caseData.title} 
-                                    style={{ width: '100%', maxWidth: '300px', borderRadius: '24px' }} 
-                                />
-                            </div>
-                        )}
-
-                        <h1>{caseData.title}</h1>
-                        <p style={{ fontSize: '1.3rem', color: 'var(--accent-color)', fontWeight: 600, marginTop: '0.5rem' }}>{caseData.tagline}</p>
-                    </div>
-                </Reveal>
-
-                <Reveal animation="fade-in-bottom" delay={0.2}>
-                    <div className="post-body" style={{ marginBottom: '3rem' }}>
-                        <p style={{ fontSize: '1.25rem', borderLeft: '3px solid var(--accent-color)', paddingLeft: '1.5rem', color: '#fff', fontStyle: 'italic', whiteSpace: 'pre-line' }}>
-                            {caseData.intro}
-                        </p>
-                    </div>
-                </Reveal>
-
-
-                {id === 'hfwl' ? (
-                    <Reveal animation="fade-in-bottom" delay={0.3}>
-                        <CaseStats />
-                    </Reveal>
-                ) : id === 'fiton' ? (
-                    <Reveal animation="fade-in-bottom" delay={0.3}>
-                        <FitonStats />
-                    </Reveal>
-                ) : id === 'delivery' ? (
-                    <Reveal animation="fade-in-bottom" delay={0.3}>
-                        <DeliveryStats />
-                    </Reveal>
-                ) : id === 'calm' ? (
-                    <Reveal animation="fade-in-bottom" delay={0.3}>
-                        <CalmStats />
-                    </Reveal>
-                ) : (
-                    <div className="service-grid-detailed" style={{ marginBottom: '4rem' }}>
-                        {caseData.sections.map((section, i) => (
-                            <div key={i} className="audit-item">
-                                <Reveal animation="fade-in-right" delay={i * 0.1}>
-                                    <h3>{section.title}</h3>
-                                </Reveal>
-                                <div>
-                                    {section.content ? (
-                                        section.content.map((item, j) => (
-                                            <Reveal animation="fade-in-bottom" delay={(i * 0.2) + (j * 0.1)} key={j}>
-                                                <p style={{ color: 'var(--muted-text)', marginBottom: '1rem' }}>{item}</p>
-                                            </Reveal>
-                                        ))
-                                    ) : (
-                                        section.text.split('\n').map((block, j) => {
-                                            if (!block.trim()) return null;
-                                            const sentences = block.split(/(?<=[.!?])\s+(?=[A-ZА-Я])/);
-                                            return sentences.map((sentence, k) => (
-                                                <Reveal animation="fade-in-bottom" delay={(i * 0.2) + (k * 0.1)} key={`${j}-${k}`}>
-                                                    <p style={{ 
-                                                        color: sentence.trim().startsWith('•') ? '#fff' : 'var(--muted-text)', 
-                                                        marginBottom: '1rem', 
-                                                        paddingLeft: sentence.trim().startsWith('•') ? '0.5rem' : 0 
-                                                    }}>
-                                                        {sentence.trim()}
-                                                    </p>
-                                                </Reveal>
-                                            ));
-                                        })
-                                    )}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                )}
-
-
-                <Reveal animation="fade-in-bottom" delay={0.5}>
-                    <div className="post-footer">
-                        <Link to="/" className="btn-secondary">← Все кейсы</Link>
-                    </div>
-                </Reveal>
+                <CaseDetail id={id} />
             </div>
-
 
             <ContactSection />
         </div>

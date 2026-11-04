@@ -1,25 +1,28 @@
 import { useEffect } from 'react';
 
+let sharedObserver = null;
+
+function ensureObserver() {
+  if (sharedObserver) return sharedObserver;
+  sharedObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        sharedObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  return sharedObserver;
+}
+
 export const useReveal = () => {
   useEffect(() => {
-    const observerOptions = {
-      threshold: 0.15
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    const reveals = document.querySelectorAll('.reveal');
-    reveals.forEach((el) => observer.observe(el));
+    const obs = ensureObserver();
+    const reveals = document.querySelectorAll('.reveal:not(.active)');
+    reveals.forEach((el) => obs.observe(el));
 
     return () => {
-      reveals.forEach((el) => observer.unobserve(el));
+      reveals.forEach((el) => obs.unobserve(el));
     };
   }, []);
 };
