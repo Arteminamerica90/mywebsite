@@ -636,62 +636,6 @@
   margin-top: -0.5rem;
 }
 
-/* Blog Section */
-.blog {
-  padding: 8rem 0;
-}
-
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
-.blog-card {
-  padding: 2.5rem;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 24px;
-  transition: var(--transition);
-}
-
-.blog-card:hover {
-  transform: translateY(-10px);
-  border-color: var(--accent-color);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.blog-date {
-  font-size: 0.85rem;
-  color: var(--accent-color);
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
-.blog-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  line-height: 1.3;
-}
-
-.blog-card p {
-  color: var(--muted-text);
-  margin-bottom: 1.5rem;
-  font-size: 0.95rem;
-  white-space: pre-line;
-}
-
-.read-more {
-  font-weight: 600;
-  color: #fff;
-  font-size: 0.9rem;
-}
-
-.read-more:hover {
-  color: var(--accent-color);
-  padding-left: 5px;
-}
-
 /* Blog Post Page */
 .blog-post-page {
   min-height: 100vh;
@@ -947,7 +891,6 @@
   }
 
   .portfolio-grid,
-  .blog-grid,
   .services-grid {
     grid-template-columns: 1fr;
   }
@@ -958,7 +901,6 @@
   }
 
   .portfolio-content,
-  .blog-card,
   .service-card,
   .audit-item {
     padding: 1.5rem;
@@ -1029,13 +971,11 @@
   }
 
   .portfolio-card h3,
-  .blog-card h3,
   .service-card h3 {
     font-size: 1.2rem;
   }
 
   .portfolio-card p,
-  .blog-card p,
   .service-card p {
     font-size: 0.98rem;
   }
@@ -2311,6 +2251,7 @@
 
 .about-proof img {
     width: 100%;
+    height: auto;
     display: block;
     border-radius: 20px;
     border: 1px solid var(--glass-border);
@@ -2322,6 +2263,11 @@
     color: #64748B;
     font-size: .82rem;
     line-height: 1.5;
+}
+
+.about-proof-post {
+    max-width: 420px;
+    margin-top: 1.5rem;
 }
 
 .about-proof-link {

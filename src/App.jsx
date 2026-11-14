@@ -2,8 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import WorkPage from './pages/WorkPage';
-import BlogPage from './pages/BlogPage';
-import BlogPost from './pages/BlogPost';
 import ServiceAudit from './pages/ServiceAudit';
 import ServiceDev from './pages/ServiceDev';
 import ServiceAnalysis from './pages/ServiceAnalysis';
@@ -24,9 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<AboutPage />} />
         <Route path="/work" element={<WorkPage />} />
-        <Route path="/blog" element={<BlogPage />} />
         <Route path="/login" element={<Navigate to="/" replace />} />
-        <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/services/audit" element={<ServiceAudit />} />
         <Route path="/services/dev" element={<ServiceDev />} />
         <Route path="/services/analysis" element={<ServiceAnalysis />} />

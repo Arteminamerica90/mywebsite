@@ -258,6 +258,10 @@ function AboutPage() {
                                 <p>Приложение поднялось в топ категории Health &amp; Fitness в App Store и держало позицию в первой тройке общих чартов Free Apps.</p>
                             </div>
                         </div>
+                        <figure className="about-proof about-proof-post">
+                            <img src="/30day-top-charts-linkedin.png" alt="Пост в LinkedIn о первом месте 30 Day Fitness Challenge по загрузкам в США и скриншот Top Charts Free Apps" loading="lazy" width="846" height="1316" />
+                            <figcaption>Пост в LinkedIn: 30 Day Fitness — #1 по загрузкам в США и #5 в мире. Ниже — Top Charts Free Apps, где приложение занимает первое место.</figcaption>
+                        </figure>
                         <figure className="about-proof">
                             <Link to="/cases/fitness30" className="about-proof-link" aria-label="Открыть кейс 30-Day Fitness">
                                 <img src="/top-charts-30day.jpg" alt="30 Day Fitness Challenge — первое место в Top Charts Free Apps" loading="lazy" />

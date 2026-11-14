@@ -23,15 +23,6 @@ function Home() {
         { id: "delivery", title: "Delivery Club", desc: "Лидерство на рынке доставки еды", category: "Food Delivery", img: "/delivery.png" },
     ];
 
-    const blogPosts = [
-        { id: 'app-advertising', date: '23 Апр 2024', title: 'Как рекламировать с помощью приложения', desc: '3 ключевых инструмента внутреннего маркетинга.\nПуши, email-сбор и иконка как рекламный баннер.' },
-        { id: 'promotion-structure', date: '15 Апр 2024', title: 'Структура продвижения приложений', desc: 'Разбираем комплексную систему продвижения.\nОт стратегии до аналитики.' },
-        { id: 'creatives', date: '12 Апр 2024', title: 'Креативы для продвижения приложений', desc: 'Что заставляет людей кликать?\nСекреты UGC и эмоциональных триггеров.' },
-        { id: 'starting-growth', date: '10 Апр 2024', title: 'С чего начинать развитие приложений', desc: 'Первые шаги: MVP.\nПоиск Product-Market Fit и сбор фидбека.' },
-        { id: 'app-marketing', date: '08 Апр 2024', title: 'Маркетинг приложений', desc: 'Глубокая стратегия удержания (Retention).\nРабота с виральностью.' },
-        { id: 'push-notifications', date: '05 Апр 2024', title: 'Пуши для развития приложений', desc: 'Как правильно использовать уведомления.\nВозвращаем пользователей в приложение.' },
-    ];
-
     const [expandedIndex, setExpandedIndex] = useState(null);
 
     return (
@@ -71,30 +62,6 @@ function Home() {
                     </div>
                 </div>
             </section>
-
-            <section id="blog" className="blog" style={{ paddingTop: '10rem' }}>
-                <div className="container">
-                    <Reveal animation="fade-in-right">
-                        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                            <h2 className="section-title" style={{ marginBottom: '1rem' }}>Наш <span className="gradient-text">Блог</span></h2>
-                            <p className="lead" style={{ margin: '0 auto' }}>Делимся опытом, кейсами и инсайтами из мира мобильного маркетинга и арбитража трафика.</p>
-                        </div>
-                    </Reveal>
-
-                    <div className="blog-grid">
-                        {blogPosts.map((post, index) => (
-                            <div className="blog-card reveal fade-in-bottom" key={post.id} style={{ transitionDelay: `${index * 0.1}s` }}>
-
-                                <div className="blog-date">{post.date}</div>
-                                <h3>{post.title}</h3>
-                                <p>{post.desc}</p>
-                                <Link to={`/blog/${post.id}`} className="read-more">Читать далее →</Link>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
 
             <section id="create" className="create-section" style={{ paddingTop: '10rem' }}>
                 <div className="container">

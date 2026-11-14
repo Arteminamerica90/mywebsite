@@ -63,7 +63,6 @@ h1, h2, h3, h4, h5, h6,
 .contact-info h3,
 .stat-title,
 .portfolio-category,
-.blog-date,
 .lead {
   font-family: var(--font-display);
 }

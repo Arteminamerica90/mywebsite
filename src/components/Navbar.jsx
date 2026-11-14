@@ -52,7 +52,6 @@ function Navbar() {
                         {aboutOpen && (
                             <ul className="nav-dropdown-menu">
                                 <li><Link to="/about">Обо мне</Link></li>
-                                <li><Link to="/blog">Блог</Link></li>
                                 <li><Link to="/work">Кейсы</Link></li>
                                 <li><Link to="/career">Карьера</Link></li>
                                 <li><Link to="/startups">Стартапы</Link></li>
