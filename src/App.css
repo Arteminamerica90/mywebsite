@@ -1825,6 +1825,52 @@
     letter-spacing: normal;
 }
 
+.about-marquee-panel {
+    scroll-margin-top: 110px;
+}
+
+/* Стрелка вверх в начале кейса — единственный способ закрыть панель */
+.about-case-close-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-case-close {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: rgba(139, 92, 246, .16);
+    border: 1px solid rgba(139, 92, 246, .55);
+    transition: background .25s, border-color .25s, transform .25s;
+}
+
+.about-case-close:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+.about-case-close:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.about-case-close-label {
+    font-size: .78rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted-text);
+}
+
 /* Компактный масштаб кейса внутри выезжающей панели */
 .about-vacancies,
 .vacancy-grid {

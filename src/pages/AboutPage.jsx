@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -147,7 +147,6 @@ function ClientCard({ item, duplicate, onSelect, isActive }) {
 function AboutPage() {
     const clients = [...cases, ...cases];
     const [activeCase, setActiveCase] = useState(null);
-    const openScrollY = useRef(0);
     const panelRef = useRef(null);
     const marqueeRef = useRef(null);
 
@@ -160,40 +159,38 @@ function AboutPage() {
         }));
     };
 
-    const handleSelect = (item) => {
-        if (activeCase?.id === item.id) {
-            setActiveCase(null);
-            scrollToMarquee();
-            return;
+    const closeCase = () => {
+        const closedId = activeCase?.id;
+        setActiveCase(null);
+        scrollToMarquee();
+        // Возвращаем клавиатурный фокус на карточку закрытого кейса,
+        // иначе после удаления кнопки он падает на body.
+        if (closedId) {
+            requestAnimationFrame(() => {
+                marqueeRef.current
+                    ?.querySelector(`.client-card[href="/cases/${closedId}"]`)
+                    ?.focus({ preventScroll: true });
+            });
         }
-        openScrollY.current = window.scrollY;
-        setActiveCase(item);
     };
 
-    // Панель с кейсом закрывается, когда кейс «дочитан»: пользователь
-    // прокрутил страницу вниз так, что нижняя граница кейса ушла выше
-    // нижнего края экрана. Первые полторы секунды после открытия и
-    // начале чтения панель не закрывается — чтобы случайный скролл
-    // сразу после клика её не сворачивал. После закрытия экран плавно
-    // возвращается к бегущей строке.
-    useEffect(() => {
-        if (!activeCase) return;
-        const openedAt = Date.now();
-        openScrollY.current = window.scrollY;
-        const onScroll = () => {
-            if (Date.now() - openedAt < 1500) return;
-            const el = panelRef.current;
-            if (!el) return;
-            const bottom = el.getBoundingClientRect().bottom;
-            const scrolled = window.scrollY - openScrollY.current;
-            if (bottom < window.innerHeight - 40 && scrolled > 240) {
-                setActiveCase(null);
-                scrollToMarquee();
-            }
-        };
-        window.addEventListener('scroll', onScroll, { passive: true });
-        return () => window.removeEventListener('scroll', onScroll);
-    }, [activeCase]);
+    const handleSelect = (item) => {
+        // Кейс закрывается только стрелкой вверх в его конце.
+        // Повторный клик по открытой карточке просто возвращает к началу кейса.
+        if (activeCase?.id === item.id) {
+            panelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            return;
+        }
+        const wasOpen = Boolean(activeCase);
+        setActiveCase(item);
+        if (wasOpen) {
+            // Переключение на другой кейс: показываем его с начала,
+            // а не с той позиции, до которой был прокручен предыдущий.
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+                panelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }));
+        }
+    };
 
     return (
         <div className="service-page">
@@ -232,6 +229,19 @@ function AboutPage() {
                         <div className="about-marquee-panel-inner">
                             <div className="about-marquee-panel-box">
                                 <div className="container">
+                                    <div className="about-case-close-wrap">
+                                        <button
+                                            type="button"
+                                            className="about-case-close"
+                                            onClick={closeCase}
+                                            aria-label="Закрыть кейс и вернуться к списку проектов"
+                                        >
+                                            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+                                                <path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                            </svg>
+                                        </button>
+                                        <span className="about-case-close-label">Закрыть кейс</span>
+                                    </div>
                                     <CaseDetail id={activeCase.id} />
                                 </div>
                             </div>
