@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import ContactSection from '../components/ContactSection';
 import { Reveal } from '../components/Reveal';
 import { CountUp } from '../components/CountUp';
-import { cases } from '../data/content';
+import { cases, games } from '../data/content';
 import { CaseDetail } from './CasePage';
 
 const scrollToContact = (e) => {
@@ -144,8 +144,26 @@ function ClientCard({ item, duplicate, onSelect, isActive }) {
     );
 }
 
+function GameCard({ item, duplicate }) {
+    return (
+        <div className="client-card client-card-game" aria-hidden={duplicate ? 'true' : undefined}>
+            <span className="client-card-logo client-card-game-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7.6 8.5h8.8a4.9 4.9 0 0 1 4.7 6.2l-.6 2.2a2.3 2.3 0 0 1-4.1 1l-1.2-1.5H8.8l-1.2 1.5a2.3 2.3 0 0 1-4.1-1l-.6-2.2a4.9 4.9 0 0 1 4.7-6.2Z" />
+                    <path d="M8.2 11.6v2.8M6.8 13h2.8M15.6 12.6h.01M17.4 14.3h.01" />
+                </svg>
+            </span>
+            <span className="client-card-body">
+                <span className="client-card-cat">{item.category}</span>
+                <span className="client-card-title">{item.title}</span>
+            </span>
+        </div>
+    );
+}
+
 function AboutPage() {
     const clients = [...cases, ...cases];
+    const gamesRow = Array.from({ length: 8 }, () => games).flat();
     const [activeCase, setActiveCase] = useState(null);
     const panelRef = useRef(null);
     const marqueeRef = useRef(null);
@@ -221,6 +239,13 @@ function AboutPage() {
                     <div className={`marquee-track ${activeCase ? 'marquee-track-paused' : ''}`}>
                         {clients.map((item, i) => (
                             <ClientCard item={item} duplicate={i >= cases.length} key={`a-${i}`} onSelect={handleSelect} isActive={activeCase?.id === item.id} />
+                        ))}
+                    </div>
+                </div>
+                <div className="marquee marquee-games" aria-label="Игры">
+                    <div className={`marquee-track marquee-track-reverse ${activeCase ? 'marquee-track-paused' : ''}`}>
+                        {gamesRow.map((item, i) => (
+                            <GameCard item={item} duplicate={i >= games.length} key={`g-${i}`} />
                         ))}
                     </div>
                 </div>

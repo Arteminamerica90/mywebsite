@@ -10,3 +10,12 @@ export const cases = [
     { id: "calm", title: "Calm", desc: "Привлечение осознанной аудитории", category: "Mental Health", img: "/calm.png" },
     { id: "delivery", title: "Delivery Club", desc: "Лидерство на рынке доставки еды", category: "Food Delivery", img: "/delivery.png" },
 ];
+
+// Игры во втором ряду бегущей строки. Кейсов на сайте у них пока нет,
+// поэтому карточки не открывают панель с подробностями.
+export const games = [
+    { id: "hustle-castle", title: "Hustle Castle", category: "Games" },
+    { id: "tacticool", title: "Tacticool", category: "Games" },
+    { id: "war-robots", title: "War Robots", category: "Games" },
+    { id: "space-arena", title: "Space Arena", category: "Games" },
+];

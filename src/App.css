@@ -2257,6 +2257,26 @@
     line-height: 1.5;
 }
 
+/* Второй ряд бегущей строки — игры */
+.marquee-games {
+    margin-top: 1rem;
+}
+
+.client-card-game {
+    cursor: default;
+}
+
+.client-card-game:hover {
+    transform: none;
+    border-color: var(--glass-border);
+}
+
+.client-card-game-icon {
+    background: rgba(139, 92, 246, .14);
+    border: 1px solid rgba(139, 92, 246, .35);
+    color: var(--accent-color);
+}
+
 /* About: hero photo */
 .about-photo {
     width: 200px;
